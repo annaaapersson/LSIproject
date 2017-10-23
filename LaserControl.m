@@ -10,7 +10,7 @@ for ii = LaserStart:LaserStop
     pause(3)
 end
 
-fclose(S)
+fclose(S);
 delete(S)
 clear S
 
