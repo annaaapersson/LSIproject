@@ -10,7 +10,8 @@ clc
 laser = establishLAserConnection();
 %% Establish figure in which the processed image will be displayed
 figure(1)
-%% Measure blood perfusion
+%% Measure blood perfusion:
+%  should only be called upon pushing measure button.
 measure();
 %% END of program - clearing memory adn such'
 closeLaserConnection(laser); % CLOSE laser connection
