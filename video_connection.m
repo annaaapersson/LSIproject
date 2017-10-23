@@ -3,13 +3,7 @@
 
 vid = videoinput('pointgrey', 1, 'F7_Mono8_2080x1552_Mode0');
 src = getselectedsource(vid);
-<<<<<<< HEAD
-=======
 
-<<<<<<< HEAD
->>>>>>> parent of 40ee437... Rearrange of files and folders
-=======
->>>>>>> parent of 40ee437... Rearrange of files and folders
 %% Set triggering options
 triggerconfig(vid, 'immediate');
 %% Settings
