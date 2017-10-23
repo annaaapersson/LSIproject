@@ -8,15 +8,18 @@ clc
 % establishCameraConnection_script;
 % Establish figure in which the processed image will be displayed
 figure(1)
-%% Take an image
+%% Take an image for ambient light corection
+imageAmb = cameraControl(camera);
+%% Put the laser on
+%% Take a raw image
 rawImage = cameraControl(camera);
 %% Image processing
 % Input code for image processing
 %% Display a processed image
-imshow(rawImage,'Border','tight','InitialMagnification', 32)
-
+processedImage = rawImage; % Just now since we don't have processedImage;
+imshow(processedImage,'Border','tight','InitialMagnification', 32)
 %% END of program - clearing memory adn such'
-%stop(camera)
+% stop(camera)
 % Once the video input object is no longer needed, delete
 % it and clear it from the workspace.
 delete(camera)
