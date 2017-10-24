@@ -1,9 +1,10 @@
-function [] = measure()
+function [] = measure(camera)
 % Measure blood perfusion
 %% Take an image for ambient light corection
-imageAmb = cameraControl(camera);
+%imageAmb = cameraControl(camera);
 %% Put the laser on
-set(laser, 'RequestToSend', 'on');
+% set(laser, 'RequestToSend', 'on');
+
 %% Take a raw image
 imageLaserRaw = cameraControl(camera);
 %% Image processing
@@ -12,6 +13,6 @@ imageLaserRaw = cameraControl(camera);
 processedImage = imageLaserRaw; % Just now since we don't have processedImage;
 imshow(processedImage,'Border','tight','InitialMagnification', 32)
 %% Turn off laser
-set(laser, 'RequestToSend', 'off'); % Turn OFF laser
+%set(laser, 'RequestToSend', 'off'); % Turn OFF laser
 end
 

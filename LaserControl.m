@@ -1,6 +1,6 @@
 function LaserControl(LaserStart,LaserStop)
 
-S = serial('com4');
+S = serial('com3');
 fopen(S)
 
 for ii = LaserStart:LaserStop
