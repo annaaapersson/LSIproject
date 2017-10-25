@@ -8,8 +8,8 @@ a=imread('liftingbody.png');
 % result = -1 + 2.*(a - min(a))./(max(a) - min(a));
 % result = a / max(a(:));
 figure(1)
- I=imshow(a, 'Colormap', jet(255)); %Makes the image color coded
-%  I=imshow(a);
+I=imshow(a, 'Colormap', jet(255)); %Makes the image color coded
+% I=imshow(a);
 drawnow
 ROI_main(1:size(a,1),1:size(a,2))=0;
 ROI_main=uint8(ROI_main);
