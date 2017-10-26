@@ -57,7 +57,7 @@ per = user;
 
 % Choose default command line output for GUItest
 handles.output = hObject;
-                                 
+handles.per = per;                                 
 % Update handles structure
 guidata(hObject, handles);
 
@@ -73,7 +73,7 @@ function varargout = GUItest_OutputFcn(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 % Get default command line output from handles structure
-varargout{1} = handles.output;
+% varargout{1} = handles.output;
 
 
 % --- Executes on button press in showImage.
@@ -91,16 +91,18 @@ for i=1:2
       e = imrect(gca,[]);
       BW = createMask(e,I);
       ROI = a;
-       ROI(BW == 0) = [];     
-%       ROI(BW == 0) = 0;
-%       ROI_main=(ROI_main .* uint8(~BW)) + ROI;
+      %Sets all the zero values to none
+%        ROI(BW == 0) = []; 
+% This becomes the ROI with ones, other is set to zero
+      ROI(BW == 0) = 0;
+%      This becomes the ROI with the values stored
+       ROI_main=(ROI_main .* uint8(~BW)) + ROI;
 %       figure(2)
 %       imshow (ROI_main);
 %       drawnow
 %       figure(1)
-      valueROI = mean2(ROI)
 end
-valueROI = per.ROI1
+handles.per.ROI1 = ROI_main;
 
 
 % --- Executes on selection change in popupmenu1.
