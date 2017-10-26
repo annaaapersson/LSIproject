@@ -1,19 +1,24 @@
-function contrastImage = calculateContrast(kernelSize, lightCorrectedImageInput)
+clear
 
-lightCorrectedImage = single(imread(lightCorrectedImageInput));
-rowCounter = floor(size(lightCorrectedImage,1)/kernelSize);
-colCounter = floor(size(lightCorrectedImage,2)/kernelSize);
+laserWhite = single(imread('laser_dark3.jpg'));
+kernelSize = 5;
+rowCounter = floor(size(laserWhite,1)/kernelSize);
+colCounter = floor(size(laserWhite,2)/kernelSize);
 contrastImage = ones(rowCounter,colCounter);
-meanOfImage = sum(sum(lightCorrectedImage))/(size(lightCorrectedImage,1)*size(lightCorrectedImage,2));
+meanOfImage = sum(sum(laserWhite))/(size(laserWhite,1)*size(laserWhite,2));
+%meanImage = ones(rowCounter,colCounter);
 
+
+%%
 for row = 1:kernelSize:(rowCounter-1)*kernelSize+1
     for col = 1:kernelSize:(colCounter-1)*kernelSize+1
         %Calculate mean intensity at current location
-       currentLocationMean = sum(sum(lightCorrectedImage(row:row+kernelSize-1,col:col+kernelSize-1)))/kernelSize^2; 
+       currentLocationMean = sum(sum(laserWhite(row:row+kernelSize-1,col:col+kernelSize-1)))/kernelSize^2; 
+       %meanImage((row+kernelSize-1)/kernelSize,(col+kernelSize-1)/kernelSize) = currentLocationMean;
        if currentLocationMean < meanOfImage %Threshold for the areas outside the hand to speed up the calculation
            
        else
-           currentLocationSquared = lightCorrectedImage(row:row+kernelSize-1,col:col+kernelSize-1).^2;
+           currentLocationSquared = laserWhite(row:row+kernelSize-1,col:col+kernelSize-1).^2;
            %Calculate variance at current location
            varianceLocation = sum(sum(currentLocationSquared))/kernelSize^2 - currentLocationMean^2;
            contrastLocation = sqrt(varianceLocation)/currentLocationMean; %Contrast at current location
@@ -24,7 +29,8 @@ for row = 1:kernelSize:(rowCounter-1)*kernelSize+1
 end
 
 
-end
-
+%%
+figure(1)
+testbild = imshow(-1*10*mat2gray(contrastImage) + max(max(mat2gray(contrastImage))), 'Colormap', jet(255));
 
     
