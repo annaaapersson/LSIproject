@@ -1,0 +1,43 @@
+classdef myClass < handle
+    properties
+        value
+    end
+    % Event is something that can be triggered by notify
+    events
+        myEvent 
+    end
+    methods
+        function getDataAndNotify(obj)
+            A = 1;
+            B = 2;
+            C = 3;
+            eventdata = myEventData(A, B, C);
+            notify(obj, 'myEvent', eventdata);
+        end
+        
+        function myListenerCallback(obj, eventdata)
+            disp('myListenerCallback ONLINE')
+            disp('
+        end
+        
+        function r = roundOff(obj)
+            r = round([obj.value],2);
+            notify(obj,'StateChange')
+        end
+        function lh = createListener(src)
+        lh = addlistener(src,'StateChange',@handleStateChange);
+        end
+        function r = multiplyBy(obj,n)
+            r = [obj.Value] * n;
+        end  
+        function obj = BasicClass(val)
+            if nargin > 0
+                if isnumeric(val)
+                    obj.Value = val;
+                else
+                    error('Value must be numeric')
+                end
+            end
+        end
+    end
+end
