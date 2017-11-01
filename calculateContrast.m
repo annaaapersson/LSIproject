@@ -5,7 +5,7 @@ clear
 % raw_image = imread('laser_white_anna.jpg');
 
 %
-laserWhite = mat2gray(single(imread('laser_dark_tofs3.jpg')));
+laserWhite = mat2gray(single(imread('laser_dark_per_efter.jpg')));
 kernelSize = 5;
 rowCounter = floor(size(laserWhite,1)/kernelSize);
 colCounter = floor(size(laserWhite,2)/kernelSize);
@@ -18,7 +18,7 @@ for row = 1:kernelSize:(rowCounter-1)*kernelSize+1
         %Calculate mean intensity at current location
        currentLocationMean = sum(sum(laserWhite(row:row+kernelSize-1,col:col+kernelSize-1)))/kernelSize^2; 
        meanImage((row+kernelSize-1)/kernelSize,(col+kernelSize-1)/kernelSize) = currentLocationMean;
-       if currentLocationMean < 0.05 %Threshold for the areas outside the hand to speed up the calculation
+       if currentLocationMean < 0.0357 %Threshold for the areas outside the hand to speed up the calculation
            
        else
            currentLocationSquared = laserWhite(row:row+kernelSize-1,col:col+kernelSize-1).^2;
