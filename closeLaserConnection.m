@@ -3,5 +3,6 @@ function [] = closeLaserConnection(laser)
 fclose(laser);
 delete(laser)
 clear laser
+%fprintf('Laser Connection stopped')
 end
 

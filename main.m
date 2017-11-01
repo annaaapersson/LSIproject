@@ -5,10 +5,23 @@ clc
 %% Establish a camera conncetion by creating a camera object named "camera"
 % Both can be used, does not matter which one
 GUI_Settings;
-%[camera,src] = establishCameraConnection;
+
+%%
+% First Image without Laser ON, Ambient laser light correction
+% [camera,src] = establishCameraConnection;
 % establishCameraConnection_script;
-%% Establish laser connection
-%laser = establishLaserConnection();
+% take image
+% close camera
+
+%% Establish laser connection & ambient light ON for Normal measurements
+% Second Image with Laser ON & ambient light ON, Ambient laser light correction
+% ambient light ON
+% establishCameraConnection_script;
+% establishLaserConnection_script;
+% laser = establishLaserConnection();
+% take image
+% close camera 
+% close laser
 
 %% Establish figure in which the processed image will be displayed
 %figure(1)

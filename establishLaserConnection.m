@@ -1,6 +1,12 @@
 function [laser] = establishLaserConnection()
 % Establish laser connection
-laser = serial('com3');
-fopen(laser);
+% global laser
+% laser = serial('com4');
+% fopen(laser);
+%fprintf('Laser Connection Established');
+
+% Lina test
+laser = serial('com4');
+fprintf('Laser Connection Established');
 end
 
