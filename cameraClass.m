@@ -3,10 +3,6 @@ classdef cameraClass
     properties
         cameraName
         src
-        % Props that we can set
-        exposure
-        gain
-        kernelSize
     end
     
     methods
