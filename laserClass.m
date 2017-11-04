@@ -1,14 +1,13 @@
 classdef laserClass
     
     properties
-        laser      
     end
     
-    methods
+    methods(Static)
         % Constructor
-        function laser = laserClass()
-            %establishLaserConnection();
-            laser = establishLaserConnection();
+        function laser = establishLaserConnection()
+            laser = serial('com4');
+            fprintf('Laser Connection Established');
         end
         
         function start(laser)
@@ -17,6 +16,8 @@ classdef laserClass
         
         function stop(laser)
             fclose(laser);
+            delete(laser)
+            clear laser
         end
     end
 end
