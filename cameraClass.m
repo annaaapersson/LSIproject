@@ -1,4 +1,4 @@
-classdef cameraClass
+classdef cameraClass % < handle % might be used
     
     properties
         cameraName

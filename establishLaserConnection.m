@@ -7,6 +7,7 @@ function [laser] = establishLaserConnection()
 
 % Lina test
 laser = serial('com4');
-fprintf('Laser Connection Established');
+%fprintf('Laser Connection Established');
+
 end
 

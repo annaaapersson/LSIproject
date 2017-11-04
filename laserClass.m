@@ -1,22 +1,17 @@
-classdef laserClass
-    
-    properties
-        laser      
+classdef laserClass %< handle Think this is the best
+    properties % Hold the data / state of the object
+        port
     end
     
-    methods
+    % Methods usually used to define property values
+    methods % Functions that can be carried out on the object
         % Constructor
         function laser = laserClass()
-            %establishLaserConnection();
-            laser = establishLaserConnection();
+            laser.port = establishLaserConnection();
         end
-        
-        function start(laser)
-            fopen(laser);
-        end
-        
-        function stop(laser)
-            fclose(laser);
+        % Don't think this fkn works
+        function [] = openLaser(laser)
+            fopen(laser.port);
         end
     end
 end
