@@ -18,6 +18,7 @@ classdef laserClass
         end
         
         function stop(laser)
+            set(laser, 'RequestToSend', 'off');
             fclose(laser);
             delete(laser)
             clear laser
