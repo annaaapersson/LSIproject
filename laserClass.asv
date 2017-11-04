@@ -13,8 +13,6 @@ classdef laserClass
         
         function start(laser)
             fopen(laser);
-            set(laser, 'RequestToSend', 'on');  %send power to the laser to make it ON
-            pause(5)            %turn laser on for 5 secs
         end
         
         function stop(laser)

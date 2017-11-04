@@ -1,35 +1,35 @@
 function varargout = GUI_Settings(varargin)
-% GUI_LINA MATLAB code for GUI_Lina.fig
-%      GUI_LINA, by itself, creates a new GUI_LINA or raises the existing
+% GUI_Settings MATLAB code for GUI_Settings.fig
+%      GUI_Settings, by itself, creates a new GUI_Settings or raises the existing
 %      singleton*.
 %
-%      H = GUI_LINA returns the handle to a new GUI_LINA or the handle to
+%      H = GUI_Settings returns the handle to a new GUI_Settings or the handle to
 %      the existing singleton*.
 %
-%      GUI_LINA('CALLBACK',hObject,eventData,handles,...) calls the local
-%      function named CALLBACK in GUI_LINA.M with the given input arguments.
+%      GUI_Settings('CALLBACK',hObject,eventData,handles,...) calls the local
+%      function named CALLBACK in GUI_Settings.M with the given input arguments.
 %
-%      GUI_LINA('Property','Value',...) creates a new GUI_LINA or raises the
+%      GUI_Settings('Property','Value',...) creates a new GUI_Settings or raises the
 %      existing singleton*.  Starting from the left, property value pairs are
-%      applied to the GUI before GUI_Lina_OpeningFcn gets called.  An
+%      applied to the GUI before GUI_Settings_OpeningFcn gets called.  An
 %      unrecognized property name or invalid value makes property application
-%      stop.  All inputs are passed to GUI_Lina_OpeningFcn via varargin.
+%      stop.  All inputs are passed to GUI_Settings_OpeningFcn via varargin.
 %
 %      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
 %      instance to run (singleton)".
 %
 % See also: GUIDE, GUIDATA, GUIHANDLES
 
-% Edit the above text to modify the response to help GUI_Lina
+% Edit the above text to modify the response to help GUI_Settings
 
-% Last Modified by GUIDE v2.5 24-Oct-2017 16:53:19
+% Last Modified by GUIDE v2.5 30-Oct-2017 09:07:39
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
 gui_State = struct('gui_Name',       mfilename, ...
                    'gui_Singleton',  gui_Singleton, ...
-                   'gui_OpeningFcn', @GUI_Lina_OpeningFcn, ...
-                   'gui_OutputFcn',  @GUI_Lina_OutputFcn, ...
+                   'gui_OpeningFcn', @GUI_Settings_OpeningFcn, ...
+                   'gui_OutputFcn',  @GUI_Settings_OutputFcn, ...
                    'gui_LayoutFcn',  [] , ...
                    'gui_Callback',   []);
 if nargin && ischar(varargin{1})
@@ -44,17 +44,16 @@ end
 % End initialization code - DO NOT EDIT
 
 
-% --- Executes just before GUI_Lina is made visible.
-function GUI_Lina_OpeningFcn(hObject, eventdata, handles, varargin)
+% --- Executes just before GUI_Settings is made visible.
+function GUI_Settings_OpeningFcn(hObject, eventdata, handles, varargin)
 % This function has no output args, see OutputFcn.
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-% varargin   command line arguments to GUI_Lina (see VARARGIN)
+% varargin   command line arguments to GUI_Settings (see VARARGIN)
 
-% Choose default command line output for GUI_Lina
+% Choose default command line output for GUI_Settings
 handles.output = hObject;
-
 % Added objects
 % create the camera object - NEW PART
 camera = cameraClass;
@@ -64,12 +63,12 @@ handles.camera = camera;
 % Update handles structure
 guidata(hObject, handles);
 
-% UIWAIT makes GUI_Lina wait for user response (see UIRESUME)
+% UIWAIT makes GUI_Settings wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
 
 
 % --- Outputs from this function are returned to the command line.
-function varargout = GUI_Lina_OutputFcn(hObject, eventdata, handles) 
+function varargout = GUI_Settings_OutputFcn(hObject, eventdata, handles) 
 % varargout  cell array for returning output args (see VARARGOUT);
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -108,21 +107,20 @@ function stopLaserButton_Callback(hObject, eventdata, handles)
 
 
 % --------------------------------------------------------------------
-function Untitled_1_Callback(hObject, eventdata, handles)
-% hObject    handle to Untitled_1 (see GCBO)
+function settingsMenu_Callback(hObject, eventdata, handles)
+% hObject    handle to settingsMenu (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
 
 % --------------------------------------------------------------------
-function Untitled_2_Callback(hObject, eventdata, handles)
-% hObject    handle to Untitled_2 (see GCBO)
+function measureMenu_Callback(hObject, eventdata, handles)
+% hObject    handle to measureMenu (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% HERE Lina
 % --- Executes during object creation, after setting all properties.
-function axes2_CreateFcn(hObject, eventdata, handles)
+function imageWindow_CreateFcn(hObject, eventdata, handles)
 %display_image
 % hObject    handle to axes2 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -134,16 +132,20 @@ function axes2_CreateFcn(hObject, eventdata, handles)
 % --- Executes on button press in startSystemWithSetParametersButton.
 function startSystemWithSetParametersButton_Callback(hObject, eventdata, handles)
 myCamera = handles.camera.cameraName;
-measure(myCamera);
-for i=1:50
-    myCamera = handles.camera.cameraName;
-    measure(myCamera);
-end
+vidRes = myCamera.VideoResolution; 
+nBands = myCamera.NumberOfBands; 
+hImage = image( zeros(vidRes(2), vidRes(1), nBands) );
+% Set up the update preview window function.
+% Image processing occur here.
+setappdata(hImage,'UpdatePreviewWindowFcn',@previewFcn);
+% Show the image
+preview(myCamera, hImage);
 % hObject    handle to startSystemWithSetParametersButton (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% hObject    handle to startRecordingButton (see GCBO)
+% --------------------------------------------------------------------
+function test_Callback(hObject, eventdata, handles)
+% hObject    handle to test (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-

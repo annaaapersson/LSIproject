@@ -9,3 +9,14 @@ Mannan/test_stoplaser.m
 test_laser_control.m
 establishLaserConnection.m
 establishLaserConnection.m
+*.m
+calculateContrast.m
+calculateContrastScript.m
+cameraClass.m
+cameraControl.m
+closeLaserConnection.m
+database_start.m
+databaseConnection.m
+display_image.m
+*.m
+*.m
