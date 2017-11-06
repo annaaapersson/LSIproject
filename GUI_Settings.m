@@ -138,7 +138,7 @@ nBands = myCamera.NumberOfBands ;
 hImage = imagesc( zeros(310, 416, nBands));
 % Set up the update preview window function.
 % Image processing occur here.
-setappdata(hImage,'UpdatePreviewWindowFcn',@previewFunction);
+setappdata(hImage,'UpdatePreviewWindowFcn',@previewFcn);
 % Show the image
 preview(myCamera, hImage);
 %% new test for this
