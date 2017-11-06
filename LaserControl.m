@@ -1,7 +1,7 @@
 function LaserControl(LaserStart,LaserStop)
 
 S = serial('com3');
-fopen(S)
+fopen(S);
 
 for ii = LaserStart:LaserStop
     set(S, 'RequestToSend', 'on');

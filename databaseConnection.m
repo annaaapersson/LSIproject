@@ -32,6 +32,7 @@ clc
 % 'gain', 'exposure', 'fps', 'kernel_size', 'image_baseline', 'image_min', 'image_max'};
 colnames = {'patient_ID', 'timestamp', 'examination', 'physician',... 
     'measurement_points', 'gain', 'exposure', 'fps', 'kernel_size'}; %, 'image_baseline'};
+
 % These are the data we need to get from different places in the code
 patientID = '20002020-2020'; % Change 'text' to some source
 timestamp = getTimestamp();
@@ -42,9 +43,10 @@ gain = 0; % Change 'nbr' to real gain number
 exposure = 8; % Change 'nbr' to real exposure number
 fps = 1; % Change 'nbr' to real fps number
 kernelSize = 5; % Change 'nbr' to real kernel_size number
-%imageBaseline = ; % Change to current baseline image
+imageBaseline = manan_2.jpg; % Change to current baseline image
 %
-data = {patientID, timestamp, examination, physician, measurement_points, gain, exposure, fps, kernelSize}; %, imageBaseline};
+data = {patientID, timestamp, examination, physician, measurement_points,...
+    gain, exposure, fps, kernelSize}; %, imageBaseline};
 data_table = cell2table(data,'VariableNames',colnames);
 % Insert the measurement data
 conn = database('measurementDatabase','doctorsName','test');

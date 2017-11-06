@@ -1,26 +1,29 @@
-
 classdef laserClass
     
     properties
+        laserName
     end
     
-    methods(Static)
-        
-        function laser = establishLaserConnection()
-            laser = serial('com4');
+    methods      
+        function laser = laserClass()
+            laser.laserName = serial('com4');
             fprintf('Laser Connection Established');
         end
         
-        function start(laser)
-            fopen(laser);
-            set(laser, 'RequestToSend', 'on');  %send power to the laser to make it ON
+        function start(obj)
+            fopen(obj.laserName);
+            set(obj.laserName, 'RequestToSend', 'on');  %send power to the laser to make it ON
             pause(5)            %turn laser on for 5 secs
         end
         
-        function stop(laser)
-            set(laser, 'RequestToSend', 'off');
-            fclose(laser);
-            delete(laser)
-            clear laser
+        function stop(obj)
+            set(obj.laserName, 'RequestToSend', 'off');
+            fclose(obj.laserName); % Move these 3 to delete laser.    
+        end
+        
+        function delete(obj)
+            delete(obj.laserName);
+            clear obj.laserName;
         end
     end
+end
