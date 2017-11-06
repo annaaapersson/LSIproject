@@ -1,25 +1,37 @@
 clear
-
+mex calculateContrastC.c
 % -----  Ambient light correction
 % ambient_light = imread('nolaser_white_anna.jpg');
-% raw_image = imread('laser_white_anna.jpg');
+% rawimage = imread('laser_white_anna.jpg');
 
 %
 laserWhite = mat2gray(single(imread('laser_dark_per_efter.jpg')));
-kernelSize = 9;
+kernelSize = 5;
 rowCounter = floor(size(laserWhite,1)/kernelSize);
 colCounter = floor(size(laserWhite,2)/kernelSize);
 contrastImage = ones(rowCounter,colCounter);
 meanImage = ones(rowCounter,colCounter);
+
+%% mex
+
+laserWhite = mat2gray(single(imread('laser_dark_per_efter.jpg')));
+kernelSize = 5;
+rowCounter = floor(size(laserWhite,1)/kernelSize);
+colCounter = floor(size(laserWhite,2)/kernelSize);
+contrastImage = ones(rowCounter,colCounter);
+meanImage = ones(rowCounter,colCounter);
+
+B = calculateContrastC(kernelSize,laserWhite,2);
 
 %%
 for row = 1:kernelSize:(rowCounter-1)*kernelSize+1
     for col = 1:kernelSize:(colCounter-1)*kernelSize+1
         %Calculate mean intensity at current location
         test = laserWhite(row:row+kernelSize-1,col:col+kernelSize-1);
-%         currentLocationMean = sum(test(:))/kernelSize^2; 
+         currentLocationMean = sum(test(:))/kernelSize^2; 
         
-       meanImage((row+kernelSize-1)/kernelSize,(col+kernelSize-1)/kernelSize) = currentLocationMean;
+%         currentLocationMean = arrayProduct2(1,row:row+kernelSize-1,col:col+kernelSize-1);
+%        meanImage((row+kernelSize-1)/kernelSize,(col+kernelSize-1)/kernelSize) = currentLocationMean;
        if currentLocationMean < 0.0357 %Threshold for the areas outside the hand to speed up the calculation
            
        else

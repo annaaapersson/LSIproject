@@ -1,1 +1,0 @@
-mex arrayProduct.c
