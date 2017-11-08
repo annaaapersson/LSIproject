@@ -132,16 +132,17 @@ function imageWindow_CreateFcn(hObject, eventdata, handles)
 % --- Executes on button press in startSystemWithSetParametersButton.
 function startSystemWithSetParametersButton_Callback(hObject, eventdata, handles)
 myCamera = handles.camera.cameraName;
-vidRes = myCamera.VideoResolution; 
-nBands = myCamera.NumberOfBands; 
-hImage = image( zeros(vidRes(2), vidRes(1), nBands) );
+vidRes = myCamera.VideoResolution;
+nBands = myCamera.NumberOfBands ;
+%hImage = image( zeros(vidRes(2), vidRes(1), nBands));
 % Set up the update preview window function.
+hImage = image( zeros(172, 231, nBands));
 % Image processing occur here.
 setappdata(hImage,'UpdatePreviewWindowFcn',@previewFcn);
-% Show the image
 preview(myCamera, hImage);
+
 % hObject    handle to startSystemWithSetParametersButton (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
+% eventdata  reserved -view to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
 % --------------------------------------------------------------------
