@@ -1,5 +1,5 @@
 clear
-mex calculateContrastC.c
+% mex calculateContrastC.c
 % -----  Ambient light correction
 % ambient_light = imread('nolaser_white_anna.jpg');
 % rawimage = imread('laser_white_anna.jpg');
@@ -12,16 +12,16 @@ colCounter = floor(size(laserWhite,2)/kernelSize);
 contrastImage = ones(rowCounter,colCounter);
 meanImage = ones(rowCounter,colCounter);
 
-%% mex
-
-laserWhite = mat2gray(single(imread('laser_dark_per_efter.jpg')));
-kernelSize = 5;
-rowCounter = floor(size(laserWhite,1)/kernelSize);
-colCounter = floor(size(laserWhite,2)/kernelSize);
-contrastImage = ones(rowCounter,colCounter);
-meanImage = ones(rowCounter,colCounter);
-
-B = calculateContrastC(kernelSize,laserWhite,2);
+% %% mex
+% 
+% laserWhite = mat2gray(single(imread('laser_dark_per_efter.jpg')));
+% kernelSize = 5;
+% rowCounter = floor(size(laserWhite,1)/kernelSize);
+% colCounter = floor(size(laserWhite,2)/kernelSize);
+% contrastImage = ones(rowCounter,colCounter);
+% meanImage = ones(rowCounter,colCounter);
+% 
+% B = calculateContrastC(kernelSize,laserWhite,2);
 
 %%
 for row = 1:kernelSize:(rowCounter-1)*kernelSize+1
@@ -45,6 +45,8 @@ for row = 1:kernelSize:(rowCounter-1)*kernelSize+1
     end
 end
 
+
+
 %%
 % figure(1)
 % imshow(contrastImage);
@@ -52,7 +54,7 @@ end
 % imshow(finalContrastImage);
 %%
 %contrastImage = mat2gray(contrastImage);
-% figure(2)
-% imshow(-1*contrastImage, 'Colormap', jet(255));
+%  figure(2)
+%  imshow(-1*contrastImage, 'Colormap', jet(255));
 
     
