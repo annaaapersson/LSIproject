@@ -1,17 +1,12 @@
-function roiButton_Callback(hObject, eventdata, auxillaryPanel,...         
-    enterPatientIDPanel, examinationPanel, examinationTablePanel,...   
-    sectionButtonPanel,historyPanel,imageDisplayPanel,measurePanel, ...           8
-    patientDBPanel,patientInfoPanel,patientPanel,roi1Panel,...
-    roi2Panel,saveMeasurementPanel,savePanel,settingsPanel,...
-    startRecordingPanel,videoPanel)
+function roiButton_Callback(hObject, eventdata, handles)
 
 % toggle residual panels invisible
-patientPanel.Visible = 'off';
-startRecordingPanel.Visible = 'off';
-savePanel.Visible = 'off';
-saveMeasurementPanel.Visible = 'off';
+handles.patientPanel.Visible = 'off';
+handles.startRecordingPanel.Visible = 'off';
+handles.savePanel.Visible = 'off';
+handles.saveMeasurementPanel.Visible = 'off';
 
 % toggle ROI1 and ROI2 visible
-roi1Panel.Visible = 'on';
-roi2Panel.Visible = 'on';
+handles.roi1Panel.Visible = 'on';
+handles.roi2Panel.Visible = 'on';
 end

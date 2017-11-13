@@ -1,14 +1,9 @@
-function enterPatientIDButton_Callback(hObject, eventdata, auxillaryPanel,...         
-    enterPatientIDPanel, examinationPanel, examinationTablePanel,...   
-    sectionButtonPanel,historyPanel,imageDisplayPanel,measurePanel, ...           
-    patientDBPanel,patientInfoPanel,patientPanel,roi1Panel,...
-    roi2Panel,saveMeasurementPanel,savePanel,settingsPanel,...
-    startRecordingPanel,videoPanel)
+function enterPatientIDButton_Callback(hObject, eventdata, handles)
 % toggle off history panel
 %historyPanel.Visible = 'off';
 
-patientInfoPanel.Visible = 'on';
-imageDisplayPanel.Visible = 'on';
-examinationPanel.Visible = 'on';
+handles.patientInfoPanel.Visible = 'on';
+handles.imageDisplayPanel.Visible = 'on';
+handles.examinationPanel.Visible = 'on';
 
 end

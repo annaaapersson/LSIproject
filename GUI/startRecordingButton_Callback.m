@@ -1,16 +1,11 @@
-function startRecordingButton_Callback(hObject, eventdata, auxillaryPanel,...         
-    enterPatientIDPanel, examinationPanel, examinationTablePanel,...   
-    sectionButtonPanel,historyPanel,imageDisplayPanel,measurePanel, ...           
-    patientDBPanel,patientInfoPanel,patientPanel,roi1Panel,...
-    roi2Panel,saveMeasurementPanel,savePanel,settingsPanel,...
-    startRecordingPanel,videoPanel)
+function startRecordingButton_Callback(hObject, eventdata, handles)
    
 
 % toggle visible off of residual objects not contributing to this 
 % interface
-patientPanel.Visible = 'off';
-roi1Panel.Visible = 'off';
-roi2Panel.Visible = 'off';
+handles.patientPanel.Visible = 'off';
+handles.roi1Panel.Visible = 'off';
+handles.roi2Panel.Visible = 'off';
 
 % if startRecordingPanel.Visible == 'off'
 %     % toggle startStopRecordingPanel on
@@ -18,8 +13,8 @@ roi2Panel.Visible = 'off';
 % else    
 
     % change button    
-    startRecordingPanel.Visible = 'off';
-    savePanel.Visible = 'on';
-    saveMeasurementPanel.Visible = 'on';
+    handles.startRecordingPanel.Visible = 'off';
+    handles.savePanel.Visible = 'on';
+    handles.saveMeasurementPanel.Visible = 'on';
 %savePanel.Visible = 'on';
 end

@@ -1,18 +1,13 @@
-function saveExaminationButton_Callback(hObject, eventdata, auxillaryPanel,...         
-    enterPatientIDPanel, examinationPanel, examinationTablePanel,...   
-    sectionButtonPanel,historyPanel,imageDisplayPanel,measurePanel, ...           
-    patientDBPanel,patientInfoPanel,patientPanel,roi1Panel,...
-    roi2Panel,saveMeasurementPanel,savePanel,settingsPanel,...
-    startRecordingPanel,videoPanel)
+function saveExaminationButton_Callback(hObject, eventdata,handles)
 
     % toggle off not needed panels
     %videoPanel.Visible = 'off';
     %measurePanel.Visible = 'off';
     
     % toggle on examination panel 
-    examinationPanel.Visible = 'on';
-    imageDisplayPanel.Visible = 'on';
-    patientInfoPanel.Visible = 'on';
+    handles.examinationPanel.Visible = 'on';
+    handles.imageDisplayPanel.Visible = 'on';
+    handles.patientInfoPanel.Visible = 'on';
 
 
 end

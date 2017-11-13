@@ -1,20 +1,15 @@
-function settingsButton_Callback(hObject, eventdata, auxillaryPanel,...         
-    enterPatientIDPanel, examinationPanel, examinationTablePanel,...   
-    sectionButtonPanel,historyPanel,imageDisplayPanel,measurePanel, ...           8
-    patientDBPanel,patientInfoPanel,patientPanel,roi1Panel,...
-    roi2Panel,saveMeasurementPanel,savePanel,settingsPanel,...
-    startRecordingPanel,videoPanel)
+function settingsButton_Callback(hObject, eventdata, handles)
 
 % toggle off all panel which are not applicable for settings
-measurePanel.Visible = 'off';
-historyPanel.Visible = 'off';
-examinationPanel.Visible = 'off';
+handles.measurePanel.Visible = 'off';
+handles.historyPanel.Visible = 'off';
+handles.examinationPanel.Visible = 'off';
 
 % shifting the auxillary plane to be in the right position
-sectionButtonPanel.Position(2) = 505/720;
-auxillaryPanel.Position(2) = 507/720;
+handles.sectionButtonPanel.Position(2) = 505/720;
+handles.auxillaryPanel.Position(2) = 507/720;
 
 % toggle the visibility of the dedicated planes on
-settingsPanel.Visible = 'on'; 
-videoPanel.Visible = 'on';
+handles.settingsPanel.Visible = 'on'; 
+handles.videoPanel.Visible = 'on';
 end
