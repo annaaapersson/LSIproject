@@ -43,7 +43,6 @@ else
 end
 % End initialization code - DO NOT EDIT
 
-
 % --- Executes just before GUI_Settings is made visible.
 function GUI_Settings_OpeningFcn(hObject, eventdata, handles, varargin)
 % This function has no output args, see OutputFcn.
@@ -59,7 +58,17 @@ handles.output = hObject;
 camera = cameraClass;
 % save camera as a field within handles - NEW PART
 handles.camera = camera;
- 
+% Add LSI image window as object
+LSIimageWindow = imageWindow;
+handles.LSIimageWindow = LSIimageWindow;
+% And listener: show image when LSIimageWindow is true
+% LSIimageWindowListener = addlistener(handles.LSIimageWindow,...
+%     'handleImageWindow',@handleImageWindow);
+% handles.LSIimageWindowListener = LSIimageWindowListener;
+
+% handles.measurementButtonListener = ...
+%     addlistener(handles.measurementButton,'ToggleState',@RespondToToggle.handleEvnt);
+
 % Update handles structure
 guidata(hObject, handles);
 
@@ -87,6 +96,21 @@ function settingsButton_Callback(hObject, eventdata, handles)
 
 % --- Executes on button press in measureButton.
 function measureButton_Callback(hObject, eventdata, handles)
+handles.LSIimageWindow.activate();
+myCamera = handles.camera.cameraName;
+while (handles.LSIimageWindow.State == true)
+    % Update handles structure
+    pause(0.01)
+    %guidata(hObject, handles);
+    %rawImage = snapshot(myCamera);
+    start(myCamera)
+    trigger(myCamera); % If choosing manual trigger option
+    rawImage = getdata(myCamera);
+    lightCorrectedImage = rawImage;
+    kernelSize = 9;
+    contrastImage = calculateContrastNewSumMinimize(kernelSize, lightCorrectedImage);
+    imshow(contrastImage, 'Colormap', jet(255));
+end
 % hObject    handle to measureButton (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
@@ -94,6 +118,7 @@ function measureButton_Callback(hObject, eventdata, handles)
 
 % --- Executes on button press in historyButton.
 function historyButton_Callback(hObject, eventdata, handles)
+handles.LSIimageWindow.deactivate();
 % hObject    handle to historyButton (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
@@ -131,15 +156,25 @@ function imageWindow_CreateFcn(hObject, eventdata, handles)
 
 % --- Executes on button press in startSystemWithSetParametersButton.
 function startSystemWithSetParametersButton_Callback(hObject, eventdata, handles)
-myCamera = handles.camera.cameraName;
-vidRes = myCamera.VideoResolution;
-nBands = myCamera.NumberOfBands ;
-%hImage = image( zeros(vidRes(2), vidRes(1), nBands));
+%start_pushed = 1
+%mainFcn();
+
+%vidRes = myCamera.VideoResolution;
+%nBands = myCamera.NumberOfBands ;
 % Set up the update preview window function.
-hImage = image( zeros(172, 231, nBands));
+%figure(1)
+%hImage = imshow(rand(310, 416, 3));
+
+    %if(handles.measurementButtonListener)
+    %start(myCamera); % Whole requirement if having immediate trigger option
+    %trigger(myCamera); % If choosing manual trigger option
+    %rawImage = getdata(myCamera);
+    
+    %hImage.CData = imshow(contrastImage, 'Colormap', jet(255));
+
 % Image processing occur here.
-setappdata(hImage,'UpdatePreviewWindowFcn',@previewFcn);
-preview(myCamera, hImage);
+%setappdata(hImage,'UpdatePreviewWindowFcn',@previewFcn);
+%preview(myCamera, hImage);
 
 % hObject    handle to startSystemWithSetParametersButton (see GCBO)
 % eventdata  reserved -view to be defined in a future version of MATLAB

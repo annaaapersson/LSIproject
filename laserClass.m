@@ -1,24 +1,28 @@
 classdef laserClass
     % To find ports, type 'instrfind'
+    % Pause may be used if necessaru but should be avoided
+    % pause(#) % Pause program # seconds
     properties
         laserName
     end
     
     methods      
         function laser = laserClass()
-            laser.laserName = serial('com3');
+            laser.laserName = serial('com4');
             fprintf('Laser Connection Established');
         end
         
         function start(obj)
             fopen(obj.laserName);
             set(obj.laserName, 'RequestToSend', 'on');  %send power to the laser to make it ON
-            %pause(5)            %turn laser on for 5 secs
+            % No pause needed, cuz program don't continue before it gets 
+            % feedback from laser that it is finnished.
         end
         
         function stop(obj)
+            % Laser turns off really fast
             set(obj.laserName, 'RequestToSend', 'off');
-            fclose(obj.laserName); % Move these 3 to delete laser.    
+            fclose(obj.laserName);  
         end
         
         function delete(obj)

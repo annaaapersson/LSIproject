@@ -1,6 +1,7 @@
 clear
-
-laserWhite = single(imread('laser_dark3.jpg'));
+load 'colorSpaceRGB'
+%laserWhite = double(imread('colorSpaceRGB.jpg'));
+laserWhite = double(colorSpaceRGB);
 kernelSize = 5;
 rowCounter = floor(size(laserWhite,1)/kernelSize);
 colCounter = floor(size(laserWhite,2)/kernelSize);
@@ -28,9 +29,9 @@ for row = 1:kernelSize:(rowCounter-1)*kernelSize+1
     end
 end
 
-
+contrastImage
 %%
 figure(1)
-testbild = imshow(-1*10*mat2gray(contrastImage) + max(max(mat2gray(contrastImage))), 'Colormap', jet(255));
+testbild = imshow(-1*9*mat2gray(contrastImage) + max(max(mat2gray(contrastImage))), 'Colormap', jet(255));
 
     

@@ -7,6 +7,9 @@ classdef cameraClass % < handle % might be used
     
     methods
         % Constructor
+%          function camera = cameraClass()
+%             camera.cameraName = establishWebCamConnection();
+%         end
         function camera = cameraClass()
             [camera.cameraName, camera.src] = establishCameraConnection();
         end
