@@ -1,12 +1,11 @@
 function contrastImage = calculateContrastNewSumMinimize(kernelSize, lightCorrectedImageInput)
 
-lightCorrectedImage = double(imread(lightCorrectedImageInput));
+lightCorrectedImage = double(lightCorrectedImageInput);
 
 rowCounter = floor(size(lightCorrectedImage,1)/kernelSize);
 colCounter = floor(size(lightCorrectedImage,2)/kernelSize);
 
 contrastImage = ones(rowCounter,colCounter); 
-
 thresholdForCalculation = sum(lightCorrectedImage(:))/(size(lightCorrectedImage,1)*size(lightCorrectedImage,2));
 
 for row = 1:kernelSize:(rowCounter-1)*kernelSize+1
@@ -17,16 +16,18 @@ for row = 1:kernelSize:(rowCounter-1)*kernelSize+1
        if currentLocationMean > thresholdForCalculation
            currentLocationSquared = currentLocation.^2;
 
-           varianceLocation = sum(sum(currentLocationSquared))/kernelSize^2 - currentLocationMean^2; %mean2(currentLocationSquared)
-           contrastLocation = sqrt(varianceLocation)/currentLocationMean; %Contrast at current location
+           varianceLocation = sum(currentLocationSquared(:))/kernelSize^2 - currentLocationMean^2; %mean2(currentLocationSquared)
+           contrastLocation = sqrt(abs(varianceLocation))/currentLocationMean; %Contrast at current location
 
-           contrastImage((row+kernelSize-1)/kernelSize,(col+kernelSize-1)/kernelSize) = contrastLocation;%(contrastLocation-0.0356)/(0.3969-0.0356);
+           contrastImage((row+kernelSize-1)/kernelSize,(col+kernelSize-1)/kernelSize) = (contrastLocation-0.0174)/(0.1749-0.0174);
        end
     end
 end
-
+contrastImage(contrastImage>1)=1;
+figure(4)
+colormap(jet(255))
+imagesc(-1*contrastImage+max(contrastImage(:)), [0 1])
 
 end
-
 
     
