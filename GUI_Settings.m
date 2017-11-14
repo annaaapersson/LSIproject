@@ -54,13 +54,21 @@ function GUI_Settings_OpeningFcn(hObject, eventdata, handles, varargin)
 % Choose default command line output for GUI_Settings
 handles.output = hObject;
 % Added objects
-% create the camera object - NEW PART
+% Camera object
 camera = cameraClass;
-% save camera as a field within handles - NEW PART
 handles.camera = camera;
+% Laser object
+laser = laserClass;
+handles.laser = laser;
 % Add LSI image window as object
 LSIimageWindow = imageWindow;
 handles.LSIimageWindow = LSIimageWindow;
+% Listener
+% LSIimageWindowListener = respondToImageProcessing(handles.LSIimageWindow);
+% handles.LSIimageWindowListener = LSIimageWindowListener;
+% Add Settings as object in handles.
+settings = settingsClass;
+handles.settings = settings;
 % And listener: show image when LSIimageWindow is true
 % LSIimageWindowListener = addlistener(handles.LSIimageWindow,...
 %     'handleImageWindow',@handleImageWindow);
@@ -96,21 +104,8 @@ function settingsButton_Callback(hObject, eventdata, handles)
 
 % --- Executes on button press in measureButton.
 function measureButton_Callback(hObject, eventdata, handles)
-handles.LSIimageWindow.activate();
-myCamera = handles.camera.cameraName;
-while (handles.LSIimageWindow.State == true)
-    % Update handles structure
-    pause(0.01)
-    %guidata(hObject, handles);
-    %rawImage = snapshot(myCamera);
-    start(myCamera)
-    trigger(myCamera); % If choosing manual trigger option
-    rawImage = getdata(myCamera);
-    lightCorrectedImage = rawImage;
-    kernelSize = 9;
-    contrastImage = calculateContrastNewSumMinimize(kernelSize, lightCorrectedImage);
-    imshow(contrastImage, 'Colormap', jet(255));
-end
+handles.LSIimageWindow.activate(handles);
+imageProcessing(handles);
 % hObject    handle to measureButton (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
@@ -156,26 +151,10 @@ function imageWindow_CreateFcn(hObject, eventdata, handles)
 
 % --- Executes on button press in startSystemWithSetParametersButton.
 function startSystemWithSetParametersButton_Callback(hObject, eventdata, handles)
-%start_pushed = 1
-%mainFcn();
-
-%vidRes = myCamera.VideoResolution;
-%nBands = myCamera.NumberOfBands ;
-% Set up the update preview window function.
-%figure(1)
-%hImage = imshow(rand(310, 416, 3));
-
-    %if(handles.measurementButtonListener)
-    %start(myCamera); % Whole requirement if having immediate trigger option
-    %trigger(myCamera); % If choosing manual trigger option
-    %rawImage = getdata(myCamera);
-    
-    %hImage.CData = imshow(contrastImage, 'Colormap', jet(255));
-
-% Image processing occur here.
-%setappdata(hImage,'UpdatePreviewWindowFcn',@previewFcn);
-%preview(myCamera, hImage);
-
+handles.LSIimageWindow.activate(handles);
+imageProcessing(handles);
+% handles.LSIimageWindow.activate;
+% imageProcessing(handles);
 % hObject    handle to startSystemWithSetParametersButton (see GCBO)
 % eventdata  reserved -view to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)

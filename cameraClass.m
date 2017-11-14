@@ -1,18 +1,18 @@
-classdef cameraClass % < handle % might be used
+classdef cameraClass < handle % might be used
     
     properties
-        cameraName
+        theCamera
         src
     end
     
     methods
         % Constructor
-%          function camera = cameraClass()
-%             camera.cameraName = establishWebCamConnection();
-%         end
-        function camera = cameraClass()
-            [camera.cameraName, camera.src] = establishCameraConnection();
+         function camera = cameraClass()
+            camera.theCamera = establishWebCamConnection();
         end
+%         function camera = cameraClass()
+%             [camera.cameraName, camera.src] = establishCameraConnection();
+%         end
     end
 end
         
