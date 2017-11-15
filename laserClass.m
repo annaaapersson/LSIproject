@@ -8,20 +8,21 @@ classdef laserClass
     
     methods      
         function laser = laserClass()
-            laser.laserName = serial('COM4');
+            laser.laserName = serial('COM3');
+            assignin('base', 'myLaser', laser.laserName);
             fprintf('Laser Connection Established');
         end
         
         function start(obj)
             fopen(obj.laserName);
-            set(obj.laserName, 'RequestToSend', 'on');  %send power to the laser to make it ON
+            %set(obj.laserName, 'RequestToSend', 'on');  %send power to the laser to make it ON
             % No pause needed, cuz program don't continue before it gets 
             % feedback from laser that it is finnished.
         end
         
         function stop(obj)
             % Laser turns off really fast
-            set(obj.laserName, 'RequestToSend', 'off');
+            %set(obj.laserName, 'RequestToSend', 'off');
             fclose(obj.laserName);  
         end
         

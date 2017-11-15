@@ -13,6 +13,8 @@ while (handles.LSIimageWindow.State == true)
     trigger(myCamera); % If choosing manual trigger option
     imageNoLaser = getdata(myCamera);
     handles.laser.start; % Turn on laser
+    start(myCamera);
+    trigger(myCamera); % If choosing manual trigger option
     imageLaser = getdata(myCamera);
     handles.laser.stop; % Turn off laser
     %% Image processing

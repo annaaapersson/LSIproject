@@ -3,6 +3,7 @@ classdef imageWindow < handle
     % Class for image windows 
     properties
         State = false;
+        %h = [];
     end
     events
         processImageEvent
@@ -10,14 +11,18 @@ classdef imageWindow < handle
     methods
         function activate(obj, handles)
             if true ~= obj.State
-                obj.State = true
+                obj.State = true;
+                %kernelSize_test = handles.settings.kernelSize
+                %obj.h = handles
                 %imageProcessing(); % want to put listener here
-                notify(obj, 'processImageEvent')
+                kS = handles.settings.kernelSize;
+                eventData = engineDataImageProcessing(kS);
+                notify(obj, 'processImageEvent', eventData)
             end
         end
          function deactivate(obj)
             if false ~= obj.State
-                obj.State = false
+                obj.State = false;
                 %notify(obj,'handleImageWindow');
             end
          end

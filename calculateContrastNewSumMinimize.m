@@ -24,6 +24,7 @@ for row = 1:kernelSize:(rowCounter-1)*kernelSize+1
     end
 end
 contrastImage(contrastImage>1)=1;
+contrastImage = -1*contrastImage+max(contrastImage(:));
 % figure(4)
 % colormap(jet(255))
 % imagesc(-1*contrastImage+max(contrastImage(:)), [0 1])

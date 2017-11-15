@@ -64,8 +64,8 @@ handles.laser = laser;
 LSIimageWindow = imageWindow;
 handles.LSIimageWindow = LSIimageWindow;
 % Listener
-% LSIimageWindowListener = respondToImageProcessing(handles.LSIimageWindow);
-% handles.LSIimageWindowListener = LSIimageWindowListener;
+LSIimageWindowListener = respondToImageProcessing(handles.LSIimageWindow);
+handles.LSIimageWindowListener = LSIimageWindowListener;
 % Add Settings as object in handles.
 settings = settingsClass;
 handles.settings = settings;
