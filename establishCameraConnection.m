@@ -1,6 +1,6 @@
 function [camera,src] = establishCameraConnection()
 % Establish camera connection by creating a camera object
-camera = videoinput('pointgrey', 1, 'F7_Mono8_2080x1552_Mode0');
+camera = videoinput('pointgrey', 1, 'F7_Mono16_2080x1552_Mode0');
 src = getselectedsource(camera);
 %% Test param
 %camera.ReturnedColorspace = 'rgb';

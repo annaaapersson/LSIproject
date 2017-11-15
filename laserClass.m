@@ -8,7 +8,7 @@ classdef laserClass
     
     methods      
         function laser = laserClass()
-            laser.laserName = serial('com4');
+            laser.laserName = serial('COM4');
             fprintf('Laser Connection Established');
         end
         
