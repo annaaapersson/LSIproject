@@ -21,5 +21,5 @@ handles.patientPanel.Visible = 'on';
 handles.videoPanel.Visible = 'on';
 
 %% Functionality
-
+handles.LSIimageWindow.activate(handles);
 end
