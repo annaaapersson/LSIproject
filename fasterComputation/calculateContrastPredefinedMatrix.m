@@ -7,6 +7,9 @@ clear
 load('apperture_1.mat');
 inputMatrix = double(apperture_1);
 
+% load('laser_dark_per_pump.jpg');
+% inputMatrix = double(imread('laser_dark_per_pump.jpg'));
+
 kernelSize = 5;
 rowCounter = floor(size(inputMatrix,1)/kernelSize);
 colCounter = floor(size(inputMatrix,2)/kernelSize);
@@ -58,8 +61,9 @@ test = calculateContrastPreMatrix(inputMatrix,kernelSize);
 histogram(test)
 
 figure(2)
-indtest = ind2rgb(test, jet);
-image(indtest)
+% indtest = ind2rgb(test, jet);
+% image(indtest)
+colormap(jet(100))
 clims = [-1*10^(-6), 0];
 bilden = imagesc(-1*test, clims);
 

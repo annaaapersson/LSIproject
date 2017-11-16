@@ -25,13 +25,14 @@ changeMod = mod(1:size(inputMatrix,2), kernelSize);
 for i = 1:1:size(inputMatrix,2)
     
     if changeMod(i) == 0
-        indexMatrix5(:,i) = floor([0:1549]/kernelSize) + 1 + indexAddition;
+        indexMatrix5(:,i) = floor([0:size(inputMatrix,1)-1]/kernelSize) + 1 + indexAddition;
         indexAddition = indexAddition + size(outputMatrixMean,1);
     else
-        indexMatrix5(:,i) = floor([0:1549]/kernelSize) + 1 + indexAddition;
+        indexMatrix5(:,i) = floor([0:size(inputMatrix,1)-1]/kernelSize) + 1 + indexAddition;
     end 
 end
 
+% Insert values in the output Matrixes
 for counter = 1:1:totalDim
     outputMatrixMean(indexMatrix5(counter)) = outputMatrixMean(indexMatrix5(counter)) + inputMatrix(counter); 
     outputMatrixSquared(indexMatrix5(counter)) = outputMatrixSquared(indexMatrix5(counter)) + inputMatrix(counter)^2;
@@ -39,6 +40,7 @@ end
 
 meanMatrix = (outputMatrixMean/kernelSize).^2;
 varianceMatrix = (outputMatrixSquared - meanMatrix)/kernelSize^2;
+varianceMatrix(varianceMatrix < 0) = 0;
 contrastMatrix = sqrt(varianceMatrix)./meanMatrix;
 end
 
