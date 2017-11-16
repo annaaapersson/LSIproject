@@ -4,12 +4,14 @@ classdef engineDataImageProcessing < event.EventData
         kernelSize;
         camera;
         laser;
+        videoStream;
     end
     methods
-        function obj = engineDataImageProcessing(kS, cam, las)
+        function obj = engineDataImageProcessing(kS, cam, las, videoStr)
             obj.kernelSize = kS;
             obj.camera = cam;
             obj.laser = las;
+            obj.videoStream = videoStr;
         end
     end
 end

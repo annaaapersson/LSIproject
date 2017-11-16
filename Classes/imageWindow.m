@@ -12,7 +12,7 @@ classdef imageWindow < handle
             if true ~= obj.State
                 obj.State = true;
                 eventData = engineDataImageProcessing(handles.settings.kernelSize,...
-                    handles.camera.theCamera, handles.laser);
+                    handles.camera.theCamera, handles.laser, handles.videoStream);
                 notify(obj, 'processImageEvent', eventData)
             end
         end

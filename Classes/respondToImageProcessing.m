@@ -12,6 +12,7 @@ classdef respondToImageProcessing < handle
             kernelSize = ed.kernelSize;
             camera = ed.camera;
             laser = ed.laser;
+            videoStream = ed.videoStream;
             while (src.State == true)
                 %% If using webcam
                 imageNoLaser = snapshot(camera);
@@ -32,9 +33,9 @@ classdef respondToImageProcessing < handle
                 ambientLightCorrectedImage = imageLaser - imageNoLaser;
                 %     contrastImage = calculateContrastPreMatrix(ambientLightCorrectedImage,...
                 %         handles.settings.kernelSize);
-                contrastImage = calculateContrastNewSumMinimize(kernelSize,...
+                contrastImage = calculateContrast(kernelSize,...
                     ambientLightCorrectedImage);
-                imshow(contrastImage, 'Colormap', jet(255));
+                imshow(contrastImage, 'parent', videoStream, 'Colormap', jet(255));
                 pause(0.01) % Neccessary in order to let other GUI be activated
             end
             %h = get('Name' , 'handles');

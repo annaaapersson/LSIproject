@@ -23,9 +23,8 @@ function main()
         % Add Settings as object in handles.
         settings = settingsClass;
         handles.settings = settings;
-
         
-        %LaserStarInc;           % calls gui function
+        LaserStarInc;           % calls gui function
         
         
         
