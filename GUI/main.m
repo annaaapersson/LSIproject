@@ -5,7 +5,11 @@ function main()
         handles = struct;       % structure which stores all objects
         datas = struct;         % structure which stores all data
         
-        LaserStarInc;           % calls gui function
+        %testFolder = addpath('testFolder');
+        %load hello.m;
+        hello();
+        
+        %LaserStarInc;           % calls gui function
         
         
         
