@@ -105,7 +105,7 @@ function settingsButton_Callback(hObject, eventdata, handles)
 % --- Executes on button press in measureButton.
 function measureButton_Callback(hObject, eventdata, handles)
 handles.LSIimageWindow.activate(handles);
-imageProcessing(handles);
+%imageProcessing(handles);
 % hObject    handle to measureButton (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
@@ -152,7 +152,7 @@ function imageWindow_CreateFcn(hObject, eventdata, handles)
 % --- Executes on button press in startSystemWithSetParametersButton.
 function startSystemWithSetParametersButton_Callback(hObject, eventdata, handles)
 handles.LSIimageWindow.activate(handles);
-imageProcessing(handles);
+%imageProcessing(handles);
 % handles.LSIimageWindow.activate;
 % imageProcessing(handles);
 % hObject    handle to startSystemWithSetParametersButton (see GCBO)

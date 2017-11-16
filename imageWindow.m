@@ -3,7 +3,6 @@ classdef imageWindow < handle
     % Class for image windows 
     properties
         State = false;
-        %h = [];
     end
     events
         processImageEvent
@@ -12,11 +11,8 @@ classdef imageWindow < handle
         function activate(obj, handles)
             if true ~= obj.State
                 obj.State = true;
-                %kernelSize_test = handles.settings.kernelSize
-                %obj.h = handles
-                %imageProcessing(); % want to put listener here
-                kS = handles.settings.kernelSize;
-                eventData = engineDataImageProcessing(kS);
+                eventData = engineDataImageProcessing(handles.settings.kernelSize,...
+                    handles.camera.theCamera, handles.laser);
                 notify(obj, 'processImageEvent', eventData)
             end
         end
