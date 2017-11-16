@@ -1,5 +1,5 @@
 function settingsButton_Callback(hObject, eventdata, handles)
-
+%% GUI
 % toggle off all panel which are not applicable for settings
 handles.measurePanel.Visible = 'off';
 handles.historyPanel.Visible = 'off';
@@ -12,4 +12,7 @@ handles.auxillaryPanel.Position(2) = 507/720;
 % toggle the visibility of the dedicated planes on
 handles.settingsPanel.Visible = 'on'; 
 handles.videoPanel.Visible = 'on';
+
+%% Functionallity 
+handles.LSIimageWindow.activate(handles);
 end
