@@ -5,9 +5,8 @@ function main()
         handles = struct;       % structure which stores all objects
         datas = struct;         % structure which stores all data
         
-        %testFolder = addpath('testFolder');
-        %load hello.m;
-        hello();
+        addpath(genpath(pwd)); % Add subfolders to path
+
         
         %LaserStarInc;           % calls gui function
         
