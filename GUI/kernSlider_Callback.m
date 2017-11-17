@@ -5,7 +5,16 @@ function kernSlider_Callback(hObject, eventdata, handles)
 % Hints: get(hObject,'Value') returns position of slider
 %        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
 val=round(hObject.Value);
-hObject.Value=val;
+hObject.Value = val;
 
-currentKernelLabel = [num2str(val) 'x' num2str(val)]; 
+currentKernelLabel = [num2str(val) 'x' num2str(val)];
 handles.kernelCurrentLabel.String = currentKernelLabel;
+
+%display(val)
+
+%% Functionality
+%handles.LSIimageWindow.deactivate;
+%pause(1)
+%handles.settings.kernelSize = val;
+
+%handles.LSIimageWindow.activate(handles);

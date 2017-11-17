@@ -14,4 +14,7 @@ handles.auxillaryPanel.Position(2) = 218/720;
 handles.historyPanel.Visible = 'on';
 handles.patientDBPanel.Visible = 'on';
 handles.examinatonTablePanel.Visible = 'on';
+
+%% Functionality
+handles.LSIimageWindow.deactivate;
 end

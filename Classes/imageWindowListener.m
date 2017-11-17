@@ -1,7 +1,4 @@
 classdef imageWindowListener < handle 
-    properties
-        contrastImage;
-    end
     methods
         function obj = imageWindowListener(imageWindow)
             addlistener(imageWindow,'processImageEvent',@imageWindowListener.handleEvnt);

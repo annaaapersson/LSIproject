@@ -12,10 +12,10 @@ classdef settingsClass < handle
             obj.kernelSize = 5;
         end
         
-        function kernelSize = getKernelSize(obj)
-            % Returns the kernelSize
-            kernelSize = obj.kernelSize;
-        end
+%         function kernelSize = getKernelSize(obj)
+%             % Returns the kernelSize
+%             kernelSize = obj.kernelSize;
+%         end
     end
 end
 
