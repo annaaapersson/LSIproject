@@ -34,8 +34,9 @@ classdef respondToImageProcessing < handle
                 %     contrastImage = calculateContrastPreMatrix(ambientLightCorrectedImage,...
                 %         handles.settings.kernelSize);
                 contrastImage = calculateContrast(kernelSize,...
-                    ambientLightCorrectedImage);
+                ambientLightCorrectedImage);
                 imshow(contrastImage, 'parent', videoStream, 'Colormap', jet(255));
+                
                 pause(0.01) % Neccessary in order to let other GUI be activated
             end
             %h = get('Name' , 'handles');

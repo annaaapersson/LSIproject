@@ -6,8 +6,9 @@ function main()
         datas = struct;         % structure which stores all data
         
         addpath(genpath(pwd)); % Add subfolders to path
-        
+
         %% Add objects
+        
         % Camera object
         camera = cameraClass;
         handles.camera = camera;

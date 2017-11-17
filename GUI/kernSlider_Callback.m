@@ -1,4 +1,4 @@
-function kernSlider_Callback(hObject, eventdata, handles)
+function kernSlider_Callback(hObject, eventdata, handles, datas)
 % hObject    handle to slider1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
