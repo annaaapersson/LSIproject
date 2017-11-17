@@ -18,7 +18,7 @@ function main()
         LSIimageWindow = imageWindow;
         handles.LSIimageWindow = LSIimageWindow;
         % Listener
-        LSIimageWindowListener = respondToImageProcessing(handles.LSIimageWindow);
+        LSIimageWindowListener = imageWindowListener(handles.LSIimageWindow);
         handles.LSIimageWindowListener = LSIimageWindowListener;
         % Add Settings as object in handles.
         settings = settingsClass;

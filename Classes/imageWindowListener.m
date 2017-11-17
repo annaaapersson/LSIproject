@@ -1,10 +1,10 @@
-classdef respondToImageProcessing < handle 
+classdef imageWindowListener < handle 
     properties
         contrastImage;
     end
     methods
-        function obj = respondToImageProcessing(imageWindow)
-            addlistener(imageWindow,'processImageEvent',@respondToImageProcessing.handleEvnt);
+        function obj = imageWindowListener(imageWindow)
+            addlistener(imageWindow,'processImageEvent',@imageWindowListener.handleEvnt);
         end
     end
     methods (Static)
