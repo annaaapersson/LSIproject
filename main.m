@@ -20,9 +20,6 @@ function main()
         % Listener
         LSIimageWindowListener = imageWindowListener(handles.LSIimageWindow);
         handles.LSIimageWindowListener = LSIimageWindowListener;
-        % Add Settings as object in handles.
-        settings = settingsClass;
-        handles.settings = settings;
         
         LaserStarInc;           % calls gui function
         

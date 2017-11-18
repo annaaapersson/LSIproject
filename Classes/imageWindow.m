@@ -11,8 +11,8 @@ classdef imageWindow < handle
         function activate(obj, handles)
             if true ~= obj.State
                 obj.State = true;
-                eventData = imageWindowEventData(handles.settings.kernelSize,...
-                    handles.camera.theCamera, handles.laser, handles.videoStream);
+                eventData = imageWindowEventData(handles.camera.theCamera,...
+                    handles.laser, handles.videoStream);
                 notify(obj, 'processImageEvent', eventData)
             end
         end

@@ -3,19 +3,21 @@ classdef settingsClass < handle
     
     properties
         kernelSize
+        %kernelSize = 9;
         %fps
     end
     
     methods
         function obj = settingsClass()
             % Constructor for settings with default parameters
-            obj.kernelSize = 5;
+            obj.kernelSize = 3;
         end
-        
-%         function kernelSize = getKernelSize(obj)
-%             % Returns the kernelSize
-%             kernelSize = obj.kernelSize;
-%         end
+
+        function setKernelSize(obj, kS)
+            % Sets the kernelSize
+            obj.kernelSize = kS;
+            %guidata(handles);
+        end
     end
 end
 

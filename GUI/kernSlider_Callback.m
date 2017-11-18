@@ -7,14 +7,6 @@ function kernSlider_Callback(hObject, eventdata, handles)
 val=round(hObject.Value);
 hObject.Value = val;
 
-currentKernelLabel = [num2str(val) 'x' num2str(val)];
+currentKernelLabel = [num2str(val*2-1) 'x' num2str(val*2-1)];
 handles.kernelCurrentLabel.String = currentKernelLabel;
-
-%display(val)
-
-%% Functionality
-%handles.LSIimageWindow.deactivate;
-%pause(1)
-%handles.settings.kernelSize = val;
-
-%handles.LSIimageWindow.activate(handles);
+guidata(hObject, handles);

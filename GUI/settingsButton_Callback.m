@@ -1,4 +1,5 @@
 function settingsButton_Callback(hObject, eventdata, handles)
+%function settingsButton_Callback(hObject, eventdata)
 %% GUI
 % toggle off all panel which are not applicable for settings
 handles.measurePanel.Visible = 'off';
@@ -13,6 +14,4 @@ handles.auxillaryPanel.Position(2) = 507/720;
 handles.settingsPanel.Visible = 'on'; 
 handles.videoPanel.Visible = 'on';
 
-%% Functionallity 
-%handles.LSIimageWindow.activate(handles);
 end
