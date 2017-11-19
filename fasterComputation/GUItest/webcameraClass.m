@@ -4,7 +4,6 @@ classdef webcameraClass < handle % might be used
         cameraName
         src
         image
-        test
     end
     
     methods
@@ -17,12 +16,12 @@ classdef webcameraClass < handle % might be used
             imageCaptured = double(rgb2gray(snapshot(obj.src)));
         end
         
-        function object = setDisplayImage(object, img2)
+        function object = setDisplayImage(object, img2, ax)
             colormap(jet(100));
             clims = [-1*10^(-3), 0];
+            axes(ax);
             bilden = imagesc(-1*img2, clims);
             object.image = bilden;
-            object.test = 2;
         end
     end
 end

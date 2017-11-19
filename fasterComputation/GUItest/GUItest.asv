@@ -62,7 +62,7 @@ ROI1 = ROIClass(480/5,640/5);
 ROI2 = ROIClass(480/5,640/5);
 
 % create the plot object
-plotObject = plotClass(1, 1);
+plotObject = plotClass(500, 100);
 
 % save objects as a field within handles
 handles.camera = camera;
@@ -118,19 +118,12 @@ setDisplayImage(handles.camera, img2, handles.axes1);
 
 
 if handles.ROI1.activate == 1
-    value1 = max(max(handles.ROI1.matrix.*img2));
-    value2 =max(max(handles.ROI2.matrix.*img2));
-    
-    insertValueROI1(handles.plotObject, value1, value2)
-%     insertValueROI2(handles.plotObject, value2)
-    
-    plotValues(handles.plotObject, handles.axes2)
+    test = max(max(handles.ROI1.matrix.*img2));
+    insertValue()
 end
 
 if handles.ROI2.activate == 1
     max(max(handles.ROI2.matrix.*img2))
-    insertValueROI2(handles.plotObject, value)
-    plotValues(handles.plotObject, handles.axes2)
 end
 
 % colormap(jet(100));
