@@ -22,7 +22,7 @@ function varargout = GUItest(varargin)
 
 % Edit the above text to modify the response to help GUItest
 
-% Last Modified by GUIDE v2.5 15-Nov-2017 11:37:09
+% Last Modified by GUIDE v2.5 20-Nov-2017 09:15:02
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -57,12 +57,16 @@ handles.output = hObject;
 
 % create the camera object
 camera = webcameraClass;
+
 % create the ROI object
 ROI1 = ROIClass(480/5,640/5);
 ROI2 = ROIClass(480/5,640/5);
 
 % create the plot object
 plotObject = plotClass(1, 1);
+
+% Create the contrast object
+contrastObject5 = contrastClass(480, 640, 5);
 
 % save objects as a field within handles
 handles.camera = camera;
@@ -71,6 +75,8 @@ handles.ROI1 = ROI1;
 handles.ROI2 = ROI2;
 
 handles.plotObject = plotObject;
+
+handles.contrastObject5 = contrastObject5;
 
 % Update handles structure
 guidata(hObject, handles);
@@ -98,46 +104,30 @@ function pushbutton1_Callback(hObject, eventdata, handles)
 % preview(cam) %Not needed
 % I = imshow(zeros(10));
 while (1)
-% tic;
+tic;
 
-img = captureImage(handles.camera);
-handles.camera.image = img;
-% img = rgb2gray(snapshot(handles.camera.image));
-img2 = calculateContrastPreMatrix(img,5);
-%max(max(img2(:)))
+% Capture raw image
+captureImage(handles.camera);
+% Calculate contrast image
+contrastImage = calculateContrastPreMatrix(handles.camera.rawImage,5);
 
-% I.CData = img2;
-% imshow(img2)
-% drawnow;
-
-setDisplayImage(handles.camera, img2, handles.axes1);
-
-% colormap(jet(100));
-% clims = [-1*10^(-3), 0];
-% imagesc(-1*img2, clims);
+% contrastImage = calContrast(handles.contrastObject5, handles.camera.rawImage, 5);
 
 
-if handles.ROI1.activate == 1
-    value1 = max(max(handles.ROI1.matrix.*img2));
-    value2 =max(max(handles.ROI2.matrix.*img2));
-    
+% Displays the image
+setDisplayImage(handles.camera, contrastImage, handles.axes1);
+
+if handles.ROI1.activate == 1 % Check if box is marked
+% Calculates mean of ROI
+    value1 = calculateMeanROI(handles.ROI1, contrastImage);
+    value2 = calculateMeanROI(handles.ROI2, contrastImage);
+% Inserts the values in ROI class
     insertValueROI1(handles.plotObject, value1, value2)
-%     insertValueROI2(handles.plotObject, value2)
-    
+% Plot the values
     plotValues(handles.plotObject, handles.axes2)
 end
 
-if handles.ROI2.activate == 1
-    max(max(handles.ROI2.matrix.*img2))
-    insertValueROI2(handles.plotObject, value)
-    plotValues(handles.plotObject, handles.axes2)
-end
-
-% colormap(jet(100));
-% clims = [-1*10^(-3), 0];
-% bilden = imagesc(-1*img2, clims);
-
-% toc
+toc
 end
 
 
@@ -147,26 +137,12 @@ function ROI_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-a=handles.camera.image;
-
-ROI_main(1:size(a,1),1:size(a,2))=0;
-ROI_main=uint8(ROI_main);
-% for i=1:1
-      e = imrect(gca,[]);
-      handles.ROI1.matrix = createMask(e,handles.camera.image);
-      e = imrect(gca,[]);
-      handles.ROI2.matrix = createMask(e,handles.camera.image);
-%       ROI = a
-%        ROI(BW == 0) = [] 
-%       ROI(BW == 0) = 0;
-%       ROI_main=(ROI_main .* uint8(~BW)) + ROI;
-%       figure(2)
-%       imshow (ROI_main);
-%       drawnow
-%       figure(1)
-%       mean2(handles.ROI1.matrix)
-%      size(handles.ROI1.matrix)
-% end
+% Create the imrect object
+e = imrect(gca,[]);
+% Creates a mask around the marked area with ones
+handles.ROI1.matrix = createMask(e,handles.camera.image);
+e = imrect(gca,[]);
+handles.ROI2.matrix = createMask(e,handles.camera.image);
 
 
 % --- Executes on button press in quit.
@@ -174,9 +150,11 @@ function quit_Callback(hObject, eventdata, handles)
 % hObject    handle to quit (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
-closePreview(handles.camera.src)
-clear(handles.camera.src) % stop cam
+% close(handles.camera.src)
+close all 
+clear all
+% closePreview(handles.camera.src)
+% clear(handles.camera.src) % stop cam
 
 
 

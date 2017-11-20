@@ -18,14 +18,9 @@ classdef plotClass < handle % might be used
         end
         
         function insertValueROI1(object, value1, value2)
-            
             object.valuesAllROI1 = [object.valuesAllROI1 value1];
             object.valuesAllROI2 = [object.valuesAllROI2 value2];
             object.counter = object.counter + 1;
-        end
-        
-        function insertValueROI2(object, value)
-            object.valuesAllROI2 = [object.valuesAllROI2 value];
         end
         
         function plotValues(object, ax)
