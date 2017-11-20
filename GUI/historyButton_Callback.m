@@ -1,5 +1,7 @@
 function historyButton_Callback(hObject, eventdata, handles)
 
+handles = guidata(hObject);
+
 % toggle off visibilty
 handles.settingsPanel.Visible = 'off';
 handles.measurePanel.Visible = 'off';
@@ -14,4 +16,6 @@ handles.auxillaryPanel.Position(2) = 218/720;
 handles.historyPanel.Visible = 'on';
 handles.patientDBPanel.Visible = 'on';
 handles.examinatonTablePanel.Visible = 'on';
+
+guidata(hObject, handles);
 end

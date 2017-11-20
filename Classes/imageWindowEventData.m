@@ -1,14 +1,12 @@
-classdef engineDataImageProcessing < event.EventData
+classdef imageWindowEventData < event.EventData
     % Creating an event data class for Image Processing
     properties
-        kernelSize;
         camera;
         laser;
         videoStream;
     end
     methods
-        function obj = engineDataImageProcessing(kS, cam, las, videoStr)
-            obj.kernelSize = kS;
+        function obj = imageWindowEventData(cam, las, videoStr)
             obj.camera = cam;
             obj.laser = las;
             obj.videoStream = videoStr;

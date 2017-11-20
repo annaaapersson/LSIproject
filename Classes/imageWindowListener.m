@@ -1,15 +1,11 @@
-classdef respondToImageProcessing < handle 
-    properties
-        contrastImage;
-    end
+classdef imageWindowListener < handle 
     methods
-        function obj = respondToImageProcessing(imageWindow)
-            addlistener(imageWindow,'processImageEvent',@respondToImageProcessing.handleEvnt);
+        function obj = imageWindowListener(imageWindow)
+            addlistener(imageWindow,'processImageEvent',@imageWindowListener.handleEvnt);
         end
     end
     methods (Static)
         function handleEvnt(src,ed)
-            kernelSize = ed.kernelSize;
             camera = ed.camera;
             laser = ed.laser;
             videoStream = ed.videoStream;
@@ -29,22 +25,14 @@ classdef respondToImageProcessing < handle
 %                 imageLaser = getdata(camera);
 %                 laser.stop; % Turn off laser
                 %% Image processing
-                %handles.settings.kernelSize
                 ambientLightCorrectedImage = imageLaser - imageNoLaser;
-                %     contrastImage = calculateContrastPreMatrix(ambientLightCorrectedImage,...
-                %         handles.settings.kernelSize);
-                contrastImage = calculateContrast(kernelSize,...
+                % Get the kernel size and round data from slider
+                kS = findobj('Tag', 'kernelSize');
+                currentKernelSize = round(kS.Value*2-1);
+                contrastImage = calculateContrast(currentKernelSize,...
                     ambientLightCorrectedImage);
-                imshow(contrastImage, 'parent', videoStream, 'Colormap', jet(255));
-                pause(0.01) % Neccessary in order to let other GUI be activated
+                 imshow(contrastImage, 'parent', videoStream, 'Colormap', jet(255));
             end
-            %h = get('Name' , 'handles');
-            %kernelSizeInListener = h.settings.kernelSize
-            %while src.State == true
-            %handlesFromGUI = guidata(hObject);
-            %h = gcbo
-            %kernelSizeValue = h.settings.kernelSize
-            %end
         end
     end
 end
