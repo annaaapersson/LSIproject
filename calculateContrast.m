@@ -1,9 +1,16 @@
-function contrastImage = calculateContrastNewSumMinimize(kernelSize, lightCorrectedImageInput)
+function contrastImage = calculateContrast(kernelSize, lightCorrectedImageInput)
 
 % Calibration values
-Kmax = 0.1749;
-Kmin = 0.0174;
-
+if kernelSize == 5
+    Kmax = 0.1830;
+    Kmin = 0.0141;
+elseif kernelSize == 7
+    Kmax = 0.1871;
+    Kmin = 0.0153;
+elseif kernelSize == 9
+    Kmax = 0.1889;
+    Kmin = 0.0164;
+end
 lightCorrectedImage = double(lightCorrectedImageInput);
 
 rowCounter = floor(size(lightCorrectedImage,1)/kernelSize);
