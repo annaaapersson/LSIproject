@@ -10,20 +10,20 @@ classdef imageWindowListener < handle
             laser = ed.laser;
             videoStream = ed.videoStream;
             while (src.State == true)
-                %% If using webcam
-                imageNoLaser = snapshot(camera);
-                % Turn on laser
-                imageLaser = snapshot(camera);
-                % Turn off laser
+%                 %% If using webcam
+%                 imageNoLaser = snapshot(camera);
+%                 % Turn on laser
+%                 imageLaser = snapshot(camera);
+%                 % Turn off laser
                 %% If using pointgrey camera and laser:
-%                 start(camera)
-%                 trigger(camera); % If choosing manual trigger option
-%                 imageNoLaser = getdata(camera);
-%                 laser.start; % Turn on laser
-%                 start(camera);
-%                 trigger(camera); % If choosing manual trigger option
-%                 imageLaser = getdata(camera);
-%                 laser.stop; % Turn off laser
+                start(camera)
+                trigger(camera); % If choosing manual trigger option
+                imageNoLaser = getdata(camera);
+                laser.start; % Turn on laser
+                start(camera);
+                trigger(camera); % If choosing manual trigger option
+                imageLaser = getdata(camera);
+                laser.stop; % Turn off laser
                 %% Image processing
                 ambientLightCorrectedImage = imageLaser - imageNoLaser;
                 % Get the kernel size and round data from slider

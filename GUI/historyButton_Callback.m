@@ -18,4 +18,8 @@ handles.patientDBPanel.Visible = 'on';
 handles.examinatonTablePanel.Visible = 'on';
 
 guidata(hObject, handles);
+
+%% Functionality
+handles.LSIimageWindow.deactivate;
+
 end
