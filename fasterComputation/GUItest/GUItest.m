@@ -119,10 +119,10 @@ setDisplayImage(handles.camera, contrastImage, handles.axes1);
 
 if handles.ROI1.activate == 1 % Check if box is marked
 % Calculates mean of ROI
-    value1 = calculateMeanROI(handles.ROI1, contrastImage)
+    value1 = calculateMeanROI(handles.ROI1, contrastImage);
     value2 = calculateMeanROI(handles.ROI2, contrastImage);
 % Inserts the values in ROI class
-    insertValueROI1(handles.plotObject, value1, value2)
+    insertValueROI1(handles.plotObject, value1, value2);
 % Plot the values
     plotValues(handles.plotObject, handles.axes2)
 end

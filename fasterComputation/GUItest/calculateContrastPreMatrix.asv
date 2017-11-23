@@ -43,7 +43,7 @@ meanMatrix = (outputMatrixMean/kernelSize).^2;
 varianceMatrix = (outputMatrixSquared - meanMatrix)/kernelSize^2;
 varianceMatrix(varianceMatrix < 0) = 0;
 contrastMatrix = sqrt(varianceMatrix)./meanMatrix;
-contrastMatrix(isnan(contrastMatrix)) = 0;
+contrastMatrix(contrast)
 end
 
 
