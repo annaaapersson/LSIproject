@@ -66,7 +66,7 @@ ROI2 = ROIClass(480/5,640/5);
 plotObject = plotClass(1, 1);
 
 % Create the contrast object
-contrastObject5 = contrastClass(480, 640, 5);
+% contrastObject5 = contrastClass(480, 640, 5);
 
 % save objects as a field within handles
 handles.camera = camera;
@@ -76,7 +76,7 @@ handles.ROI2 = ROI2;
 
 handles.plotObject = plotObject;
 
-handles.contrastObject5 = contrastObject5;
+% handles.contrastObject5 = contrastObject5;
 
 % Update handles structure
 guidata(hObject, handles);
@@ -163,6 +163,7 @@ function checkROI1_Callback(hObject, eventdata, handles)
 % hObject    handle to checkROI1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+
 if handles.ROI1.activate == 1
     handles.ROI1.activate = 0;
 else
