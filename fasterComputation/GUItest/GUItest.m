@@ -104,7 +104,7 @@ function pushbutton1_Callback(hObject, eventdata, handles)
 % preview(cam) %Not needed
 % I = imshow(zeros(10));
 while (1)
-tic;
+% tic;
 
 % Capture raw image
 captureImage(handles.camera);
@@ -119,7 +119,7 @@ setDisplayImage(handles.camera, contrastImage, handles.axes1);
 
 if handles.ROI1.activate == 1 % Check if box is marked
 % Calculates mean of ROI
-    value1 = calculateMeanROI(handles.ROI1, contrastImage);
+    value1 = calculateMeanROI(handles.ROI1, contrastImage)
     value2 = calculateMeanROI(handles.ROI2, contrastImage);
 % Inserts the values in ROI class
     insertValueROI1(handles.plotObject, value1, value2)
@@ -127,7 +127,7 @@ if handles.ROI1.activate == 1 % Check if box is marked
     plotValues(handles.plotObject, handles.axes2)
 end
 
-toc
+% toc
 end
 
 

@@ -11,7 +11,7 @@ classdef ROIClass < handle % might be used
             ROI.matrix = zeros(dimR, dimC);
         end
         function output = calculateMeanROI(object, image)
-            matrixROI = object.matrix.*image;
+            matrixROI = object.matrix.*image
             matrixROI(matrixROI==0) = [];
             output = mean(matrixROI);
         end
