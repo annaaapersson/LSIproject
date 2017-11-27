@@ -7,7 +7,10 @@ function gainSlider_Callback(hObject, eventdata, handles)
 handles = guidata(hObject);
 
 val = round(hObject.Value);
-handles.gainCurrentLabel.String = (2^val)*50;
+handles.gainCurrentLabel.String = val;
 
-%updating all the handles
+% Set the gain of the camera to the new gain;
+global src;
+src.Gain = val;
+% Updating all the handles
 guidata(hObject, handles);

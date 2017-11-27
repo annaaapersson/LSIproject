@@ -20,6 +20,7 @@ handles.examinatonTablePanel.Visible = 'on';
 guidata(hObject, handles);
 
 %% Functionality
+%Deactivate image flow
 handles.LSIimageWindow.deactivate;
 
 end

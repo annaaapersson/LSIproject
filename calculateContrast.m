@@ -1,5 +1,10 @@
 function contrastImage = calculateContrast(kernelSize, lightCorrectedImageInput)
 
+% Define so they exist after if statements
+
+% Calibration values if kernelSize = 3 (Smallest)
+Kmax = 0.1749;
+Kmin = 0.0174;
 % Calibration values
 if kernelSize == 5
     Kmax = 0.1830;
@@ -36,8 +41,6 @@ for row = 1:kernelSize:(rowCounter-1)*kernelSize+1
 end
 contrastImage(contrastImage>1)=1;
 contrastImage = -1*contrastImage + max(contrastImage(:));
-
-
 end
 
     

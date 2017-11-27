@@ -14,5 +14,6 @@ handles.settingsPanel.Visible = 'on';
 handles.videoPanel.Visible = 'on';
 
 %% Functionallity 
-handles.LSIimageWindow.activate(handles);
+%Deactivate image flow
+handles.LSIimageWindow.deactivate;
 end
