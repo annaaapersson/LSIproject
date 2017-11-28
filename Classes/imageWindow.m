@@ -3,6 +3,9 @@ classdef imageWindow < handle
     % Class for image windows 
     properties
         State = false;
+        image
+        activeImrect = 0
+        activeCalcROI = 0
     end
     events
         processImageEvent
@@ -21,19 +24,26 @@ classdef imageWindow < handle
             end
          end
          function takeTestImage(obj, handles)
-             %% If using pointgrey camera and laser:
+             %% If using webcam
              laser = handles.laser; % Get the laser object
-             global camera; % Get the camera object
-             start(camera)
-             trigger(camera); % If choosing manual trigger
-             imageNoLaser = getdata(camera);
-             laser.start; % Turn on laser
-             %start(camera); % Not needed if we have 2 triggers for
-             % each start, which we currently have
-             trigger(camera); % If choosing manual trigger
-             imageLaser = getdata(camera);
-             stop(camera); % Stop the camera
-             laser.stop; % Turn off laser
+             global camera;
+             imageNoLaser = snapshot(camera);
+             % laser.start;
+             imageLaser = snapshot(camera);
+             % Stop laser
+              %% If using pointgrey camera and laser:
+%              laser = handles.laser; % Get the laser object
+%              global camera; % Get the camera object
+%              start(camera)
+%              trigger(camera); % If choosing manual trigger
+%              imageNoLaser = getdata(camera);
+%              laser.start; % Turn on laser
+%              %start(camera); % Not needed if we have 2 triggers for
+%              % each start, which we currently have
+%              trigger(camera); % If choosing manual trigger
+%              imageLaser = getdata(camera);
+%              stop(camera); % Stop the camera
+%              laser.stop; % Turn off laser
              %% Image processing
              ambientLightCorrectedImage = imageLaser - imageNoLaser;
              % Get the kernel size and round data from slider

@@ -4,8 +4,11 @@ function addROI1_Callback(hObject, eventdata, handles, datas)
     % creates a rectangular of inserted size after initializing them
     % with the apply buttons
     %display(handles.apply11Button);
-    datas11 = handles.apply11Button.UserData;
-    datas12 = handles.apply12Button.UserData;
+    %datas11 = handles.apply11Button.UserData;
+    %datas12 = handles.apply12Button.UserData;
+    
+    % Creates a mask around the marked area with ones
+    handles.LSIimageWindow.activeImrect = 1;
     
     %h = imrect(gca, [datas12.x datas12.y datas11.width datas11.height]);
     %display(handles.apply12Button.UserData);
