@@ -5,20 +5,20 @@ classdef plotClass < handle % might be used
         valuesPlotROI1
         valuesAllROI2
         valuesPlotROI2
-        counter = 0
+        counter
     end
     
     methods
         % Constructor
-        function plotObj = plotClass(numValues, numValuesPlot)
-            plotObj.valuesAllROI1 = zeros(1, numValues);
-            plotObj.valuesPlotROI1 = zeros(1, numValuesPlot);
-            plotObj.valuesAllROI2 = zeros(1, numValues);
-            plotObj.valuesPlotROI2 = zeros(1, numValuesPlot);
+        function plotObj = plotClass()
+            plotObj.valuesAllROI1 = [];
+            plotObj.valuesPlotROI1 = [];
+            plotObj.valuesAllROI2 = [];
+            plotObj.valuesPlotROI2 = [];
         end
         
         function insertValueROI1(object, value1, value2)
-            if object.counter == 0
+            if isempty(object.counter)
                 tic;
             end
             object.valuesAllROI1 = [object.valuesAllROI1 value1];
