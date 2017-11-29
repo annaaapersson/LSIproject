@@ -52,6 +52,7 @@ classdef imageWindow < handle
              contrastImage = calculateContrast(currentKernelSize,...
                  ambientLightCorrectedImage);
              imshow(contrastImage, 'parent', handles.videoStream, 'Colormap', jet(255));
+             colorbar(handles.videoStream);
          end
     end
 end

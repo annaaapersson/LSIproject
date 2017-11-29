@@ -1,4 +1,4 @@
-function contrastImage = calculateContrastNewSumMinimize(kernelSize, lightCorrectedImageInput)
+function contrastImage = calculateContrastNew(kernelSize, lightCorrectedImageInput)
 
 % %exp.time 3ms
 % Kmax = 0.167;
@@ -9,8 +9,8 @@ function contrastImage = calculateContrastNewSumMinimize(kernelSize, lightCorrec
 % Kmin = 0.0342;
 
 %exp.time 12ms
-% Kmax = 0.1440;
-% Kmin = 0.0268;
+Kmax = 0.1440;
+Kmin = 0.0268;
 
 lightCorrectedImage = double(lightCorrectedImageInput);
 

@@ -2,6 +2,8 @@ function stopRecordingButton_Callback(hObject, eventdata)
 
 handles = guidata(hObject);
 
+% Stop running image flow
+handles.LSIimageWindow.deactivate;
 
 handles.startRecordingButton.Visible = 'on';
 handles.stopRecordingButton.Visible = 'off';

@@ -1,19 +1,19 @@
 function contrastImage = calculateContrast(kernelSize, lightCorrectedImageInput)
 
-% Define so they exist after if statements
-Kmax = 0.2907;
-Kmin = 0.0297;
-% Calibration values
-if kernelSize == 5
-    Kmax = 0.2907;
-    Kmin = 0.0297;
-elseif kernelSize == 7
-    Kmax = 0.2954;
-    Kmin = 0.0303;
-elseif kernelSize == 9
-    Kmax = 0.2994;
-    Kmin = 0.0307;
-end
+%% New contrast values
+% %exp.time 3ms
+% Kmax = 0.167;
+% Kmin = 0.0454;
+% 
+% %exp.time 6ms
+% Kmax = 0.1459;
+% Kmin = 0.0342;
+
+%exp.time 12ms
+Kmax = 0.09; % Fungerar
+Kmin = 0.02; % Fungerar
+%Kmax = 0.1440;
+%Kmin = 0.0268;
 
 lightCorrectedImage = double(lightCorrectedImageInput);
 
