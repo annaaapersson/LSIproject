@@ -22,9 +22,9 @@ function main()
         src.ExposureMode = 'Manual';
         src.Exposure = 0;
         src.GainMode = 'Manual';
-        src.Gain = 0; % Some [dB] scale
+        src.Gain = 1; % Some [dB] scale
         src.GammaMode = 'Manual';
-        src.Gamma = 1.0;
+        src.Gamma = 0;
         src.SharpnessMode = 'Manual';
         src.Sharpness = 1220;
         src.ShutterMode = 'Manual';

@@ -33,11 +33,13 @@ classdef imageWindowListener < handle
                 currentKernelSize = round(kS.Value*2-1);
                 contrastImage = calculateContrast(currentKernelSize,...
                     ambientLightCorrectedImage);
-                imshow(contrastImage, 'parent', videoStream, 'Colormap', jet(255));
+                imshow(contrastImage, 'parent', videoStream, 'Colormap', jet(255),...
+                     'DisplayRange',[0 2]);
                 colorbar(videoStream);
                 %% Select and calculate ROI
                 if src.activeImrect == 1
-                    displayImage = imshow(contrastImage, 'parent', videoStream, 'Colormap', jet(255));
+                    displayImage = imshow(contrastImage, 'parent',...
+                        videoStream, 'Colormap', jet(255),'DisplayRange',[0.5 1]);
                     colorbar(videoStream);
                     axes(videoStream);
                     e = imrect(gca,[]);

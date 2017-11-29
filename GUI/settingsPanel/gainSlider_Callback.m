@@ -10,7 +10,7 @@ val = round(hObject.Value);
 handles.gainCurrentLabel.String = val;
 
 % Set the gain of the camera to the new gain;
-global src;
-src.Gain = val;
+% global src;
+% src.Gain = val;
 % Updating all the handles
 guidata(hObject, handles);

@@ -1,19 +1,17 @@
 function contrastImage = calculateContrast(kernelSize, lightCorrectedImageInput)
 
 %% New contrast values
-% %exp.time 3ms
+%exp.time 3ms
 % Kmax = 0.167;
 % Kmin = 0.0454;
-% 
-% %exp.time 6ms
+
+%exp.time 6ms
 % Kmax = 0.1459;
 % Kmin = 0.0342;
 
 %exp.time 12ms
-Kmax = 0.09; % Fungerar
-Kmin = 0.02; % Fungerar
-%Kmax = 0.1440;
-%Kmin = 0.0268;
+Kmax = 0.1440;
+Kmin = 0.0268;
 
 lightCorrectedImage = double(lightCorrectedImageInput);
 
@@ -39,7 +37,9 @@ for row = 1:kernelSize:(rowCounter-1)*kernelSize+1
     end
 end
 contrastImage(contrastImage>1)=1;
-contrastImage = -1*contrastImage + max(contrastImage(:));
+%contrastImage = -1*contrastImage + max(contrastImage(:));
+contrastImage = (-1)*contrastImage + 1 ;
+%  contrastImage = 1./contrastImage - 1 ;
 end
 
     
