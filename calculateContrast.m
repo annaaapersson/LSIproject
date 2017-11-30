@@ -1,17 +1,12 @@
-function contrastImage = calculateContrast(kernelSize, lightCorrectedImageInput)
+function contrastImage = calculateContrast(kernelSize,...
+    lightCorrectedImageInput, Kmin, Kmax)
 
 %% New contrast values
-%exp.time 3ms
-% Kmax = 0.167;
-% Kmin = 0.0454;
 
-%exp.time 6ms
-% Kmax = 0.1459;
-% Kmin = 0.0342;
 
-%exp.time 12ms
-Kmax = 0.1440;
-Kmin = 0.0268;
+
+
+
 
 lightCorrectedImage = double(lightCorrectedImageInput);
 

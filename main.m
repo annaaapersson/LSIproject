@@ -24,7 +24,7 @@ function main()
         src.GainMode = 'Manual';
         src.Gain = 1; % Some [dB] scale
         src.GammaMode = 'Manual';
-        src.Gamma = 0;
+        src.Gamma = 1;
         src.SharpnessMode = 'Manual';
         src.Sharpness = 1220;
         src.ShutterMode = 'Manual';
@@ -50,7 +50,10 @@ function main()
         handles.ROI2 = ROIClass(720/5,1280/5); % Webcam size
         % Create the plot object
         handles.plotObject = plotClass;
+        % Settings
         handles.previousExposureValue = 6;
+        handles.Kmin = 0.0344;
+        handles.Kmax = 0.1459;
         
         LaserStarInc;           % calls gui function
 end        

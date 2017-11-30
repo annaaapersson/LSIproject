@@ -32,7 +32,7 @@ classdef imageWindowListener < handle
                 kS = findobj('Tag', 'kernelSize');
                 currentKernelSize = round(kS.Value*2-1);
                 contrastImage = calculateContrast(currentKernelSize,...
-                    ambientLightCorrectedImage);
+                    ambientLightCorrectedImage, handles.Kmin, handles.Kmax);
                 imshow(contrastImage, 'parent', videoStream, 'Colormap', jet(255),...
                      'DisplayRange',[0 2]);
                 colorbar(videoStream);

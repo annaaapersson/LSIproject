@@ -50,7 +50,7 @@ classdef imageWindow < handle
              kS = findobj('Tag', 'kernelSize');
              currentKernelSize = round(kS.Value*2-1);
              contrastImage = calculateContrast(currentKernelSize,...
-                 ambientLightCorrectedImage);
+                 ambientLightCorrectedImage, handles.Kmin, handles.Kmax);
              imshow(contrastImage, 'parent', handles.videoStream, 'Colormap', jet(255),...
                      'DisplayRange',[0.5 1]);
              colorbar(handles.videoStream);
