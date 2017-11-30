@@ -1,14 +1,7 @@
 function contrastImage = calculateContrast(kernelSize,...
     lightCorrectedImageInput, Kmin, Kmax)
 
-%% New contrast values
-
-
-
-
-
-
-lightCorrectedImage = double(lightCorrectedImageInput);
+lightCorrectedImage = double(lightCorrectedImageInput');
 
 rowCounter = floor(size(lightCorrectedImage,1)/kernelSize);
 colCounter = floor(size(lightCorrectedImage,2)/kernelSize);

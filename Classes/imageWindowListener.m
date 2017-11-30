@@ -34,7 +34,7 @@ classdef imageWindowListener < handle
                 contrastImage = calculateContrast(currentKernelSize,...
                     ambientLightCorrectedImage, ed.handles.Kmin, ed.handles.Kmax);
                 imshow(contrastImage, 'parent', videoStream, 'Colormap', jet(255),...
-                     'DisplayRange',[0 2]);
+                     'DisplayRange',[0.5 1]);
                 colorbar(videoStream);
                 %% Select and calculate ROI
                 if src.activeImrect == 1

@@ -1,5 +1,4 @@
 classdef imageWindow < handle
-%classdef (ConstructOnLoad) imageWindow < event.EventData
     % Class for image windows 
     properties
         State = false;
