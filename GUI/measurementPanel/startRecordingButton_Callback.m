@@ -14,6 +14,7 @@ handles.saveMeasurementPanel.Visible = 'off';
 
 %savePanel.Visible = 'on';
 handles.stopRecordingButton.Visible = 'on';
+handles.timeStamp = getTimestamp;
 
 % Activate start of ROI calculations
 handles.LSIimageWindow.activeCalcROI = 1;

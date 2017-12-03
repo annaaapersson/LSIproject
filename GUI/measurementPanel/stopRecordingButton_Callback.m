@@ -15,6 +15,7 @@ handles.saveMeasurementPanel.Visible = 'on';
 handles.LSIimageWindow.activeCalcROI = 0;
 
 plotValues(handles.plotObject, handles.roiGraphDB);
+plotValues(handles.plotObject, handles.smallerRoiGraph);
 
 % Put the ROI vectors in the workspace - temporary solution
 assignin('base', 'ROI_1_vector', handles.plotObject.valuesAllROI1);
