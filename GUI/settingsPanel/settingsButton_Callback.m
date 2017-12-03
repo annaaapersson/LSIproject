@@ -1,6 +1,7 @@
 function settingsButton_Callback(hObject, eventdata, handles)
 %% GUI
 % toggle off all panel which are not applicable for settings
+handles = guidata(hObject);
 handles.measurePanel.Visible = 'off';
 handles.historyPanel.Visible = 'off';
 handles.examinationPanel.Visible = 'off';

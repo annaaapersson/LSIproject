@@ -6,12 +6,10 @@ function exposureSlider_Callback(hObject, eventdata, handles)
 %        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
 handles = guidata(hObject);
 
-% Get the previous exposure time value;
 previousValue = handles.previousExposureValue;
-
 val=round(hObject.Value); % The value to which the slider is changed
 
-% Get camera
+%Get camera
 global src;
 % Limit values of exposureSlider to 3, 6 and 12 milliseconds
 % Also update Gain, Kmin, Kmax according to exposure value
@@ -36,12 +34,11 @@ else
 end
 % Give the camera the new exposure time value
 src.Shutter = val;
-
 % Update previous value
-handles.previousExposureValue = val;   
-
+%handles.previousValue = val;    
 % Update value to what was set
 hObject.Value = val;
 handles.exposureCurrentLabel.String = val;
-guidata(hObject, handles);
+handles.previousExposureValue = val;  
 
+guidata(hObject, handles);
