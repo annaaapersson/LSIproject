@@ -49,16 +49,16 @@ function main()
         % Listener
         handles.LSIimageWindowListener = imageWindowListener(handles.LSIimageWindow);
         % handles or the database
-        handles.database = databaseClass;
+        %handles.database = databaseClass;
         % ROI objects. Fix according to kernelSize
         handles.ROI1 = ROIClass(720/5,1280/5); % Webcam size
         handles.ROI2 = ROIClass(720/5,1280/5); % Webcam size
         % Create the plot object
         handles.plotObject = plotClass;
         % Settings
-        handles.previousExposureValue = 6;
-        handles.Kmin = 0.0344;
-        handles.Kmax = 0.1459;
+        handles.previousExposureValue = 12;
+        handles.Kmax = 0.1440;
+        handles.Kmin = 0.0268;
         
         handles.kernelSizeSlider.Value = 3;
         handles.gainSlider.Value = 3;

@@ -65,7 +65,7 @@ handles.videoPanel = uipanel(...
 %predifined dummy variables
 %#################################################
 minIso = 0; maxIso = 12; iso = 0; % the number represents e.g. 50*(2^minIso)
-minExposure = 3; maxExposure = 12; exposure = 6;
+minExposure = 3; maxExposure = 12; exposure = 12;
 minKernel = 3; maxKernel = 5; kernel = 3;
 
 minKernelLabel = [num2str(minKernel*2-1) 'x' num2str(minKernel*2-1)];
