@@ -49,8 +49,8 @@ function main()
         % Listener
         handles.LSIimageWindowListener = imageWindowListener(handles.LSIimageWindow);
         % Measurement data
-        handles.measurementData = measurementClass();
-        handles.database = databaseClass();
+        handles.measurementData = measurementClass;
+        handles.database = databaseClass;
         % handles or the database
         %handles.database = databaseClass;
         % ROI objects. Fix according to kernelSize
@@ -75,6 +75,7 @@ function main()
         handles.imageName1 = '';
         handles.imageName2 = '';
         handles.imageName3 = '';
+%        handles.physicianName = 'Dr. Oetker';
         
         LaserStarInc;           % calls gui function
         guidata(handles.fig, handles);

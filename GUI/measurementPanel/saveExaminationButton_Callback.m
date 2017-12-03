@@ -16,7 +16,7 @@ function saveExaminationButton_Callback(hObject, eventdata)
     examName = handles.examinationNameEditField.String;
     gain = sprintf('Gain: ISO %d', handles.gainSlider.Value);
     exposure = sprintf('Exposure: %d ms', handles.exposureSlider.Value);
-    kernelSizeValue = sprintf('Kernel size: %d x %d px', kernel, kernel);
+    kernelSizeValue = sprintf('Kernel size: %d x %d px', kernel*2-1, kernel*2-1);
     
     %handles.patientIDDBLabel.String = handles.patientID;
     handles.examinationTitleLabel.String = examName;
@@ -30,20 +30,21 @@ function saveExaminationButton_Callback(hObject, eventdata)
     % gets the images from the objects
     image1 = handles.measurementData.baselineImage;
     image2 = handles.measurementData.minImage;
-    image3 = handles.measurementData.maxImage;;
+    image3 = handles.measurementData.maxImage;
     
-%     % displayes them in the measurement overview
-%     imshow(image1, 'Parent', handles.);
-%     imshow(image2, 'Parent', handles.image2);
-%     imshow(image3, 'Parent', handles.image3);
+    % displayes them in the measurement overview
+    imshow(image1, 'Parent', handles.image_T0);
+    imshow(image2, 'Parent', handles.image_T1);
+    imshow(image3, 'Parent', handles.image_T2);
     
     thisTimestamp = getTimestamp();
-%    if handles.isLogged ==1
+    if handles.isLogged ==1
         saveImageToFile(patientID,thisTimestamp , image1, 'baseline');
         saveImageToFile(patientID, thisTimestamp, image2, 'min');
         saveImageToFile(patientID,thisTimestamp, image3, 'max')
-        %    end 
-        
+    end 
+    
+    handles.database.sendMeasurementData(handles, thisTimestamp, examName)   
     examinationName = handles.examinationNameEditField.String;
     data = struct('examinationName', examinationName);
     handles.examinationNameEditField.String = '';

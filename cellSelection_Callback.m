@@ -2,7 +2,7 @@ function cellSelection_Callback(hObject, eventdata)
     handles = guidata(hObject);
     selectedRow = eventdata.Indices(1);
     selectedExamination = handles.examinationDataTable.Data(selectedRow,:);
-    display(selectedExamination);
+    %display(selectedExamination);
     
     %display(selectedExamination{1,4});
     %examinationName = selectedExamination{1,3};
