@@ -2,14 +2,18 @@ function main()
     close all
     clear all
     
-        handles = struct;       % structure which stores all objects
-        datas = struct;         % structure which stores all data
+        handles = struct;       % structure which stores all objects       
         
         addpath(genpath(pwd)); % Add subfolders to path
         
+        folderFlag = exist('ImageArchive');
+        if folderFlag == 0
+            mkdir ImageArchive;
+        end
+        
         % Add objects
         %% Camera object
-        %% If using webcam
+%         %% If using webcam
 %         global camera;
 %         camera = establishWebCamConnection;
         %% If using point grey camera
@@ -44,7 +48,8 @@ function main()
         handles.LSIimageWindow = imageWindow;
         % Listener
         handles.LSIimageWindowListener = imageWindowListener(handles.LSIimageWindow);
-        
+        % handles or the database
+        handles.database = databaseClass;
         % ROI objects. Fix according to kernelSize
         handles.ROI1 = ROIClass(720/5,1280/5); % Webcam size
         handles.ROI2 = ROIClass(720/5,1280/5); % Webcam size
@@ -55,7 +60,21 @@ function main()
         handles.Kmin = 0.0344;
         handles.Kmax = 0.1459;
         
+        handles.kernelSizeSlider.Value = 3;
+        handles.gainSlider.Value = 3;
+        handles.exposureSlider.Value = 7;
+        handles.loggedPatient = '';
+        handles.loggedPatientID = '';
+        handles.isLogged = 0;
+        handles.ROI1Values = [];
+        handles.ROI2Values = [];
+        handles.timeStamp = '';
+        handles.imageName1 = '';
+        handles.imageName2 = '';
+        handles.imageName3 = '';
+        
         LaserStarInc;           % calls gui function
+        guidata(handles.fig, handles);
 end        
         
 % callback functions for the GUI are stored in function files
