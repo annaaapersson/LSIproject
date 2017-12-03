@@ -3,10 +3,11 @@ function [image] = getImageFromFile(patientID, timestamp, imageType)
 %% Required input types
 % Input 'patientID', 'timestamp' and 'imageType' of type string
 % 'imageType' can be baseline, min, max, ROI1 and ROI2.
+addpath(genpath(pwd));
 
-fullDestinationFileName = createFilename(patientID, timestamp, imageType)
+imageFilename = getImageFilename(patientID, timestamp, imageType)
 
-load fullDestinationFileName;
+image = imread(imageFilename);
 
 end
 
