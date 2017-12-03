@@ -35,8 +35,6 @@ function saveExaminationButton_Callback(hObject, eventdata)
     imshow(image2, 'Parent', handles.image_T1);
     imshow(image3, 'Parent', handles.image_T2);
     
-
-    
     examinationName = handles.examinationNameEditField.String;
     data = struct('examinationName', examinationName);
     handles.examinationNameEditField.String = '';
