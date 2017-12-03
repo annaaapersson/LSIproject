@@ -1,4 +1,4 @@
-classdef measurementClass < handles
+classdef measurementClass < handle
     %UNTITLED Summary of this class goes here
     %   Detailed explanation goes here
     
@@ -19,7 +19,7 @@ classdef measurementClass < handles
             % videoStream axes panel, housing the calculated
             % perfusion images.
             F = getframe(handles.videoStream);  %Save
-            obj.minImage = frame2im(F);
+            obj.baselineImage = frame2im(F);
         end
          function saveMinImage(obj, handles)
             %% Saves the image to file for the specified patient

@@ -6,9 +6,9 @@ function main()
         
         addpath(genpath(pwd)); % Add subfolders to path
         
-        folderFlag = exist('ImageArchive');
+        folderFlag = exist('measurementImages');
         if folderFlag == 0
-            mkdir ImageArchive;
+            mkdir measurementImages;
         end
         
         % Add objects
@@ -43,13 +43,14 @@ function main()
         %camera.FramesPerTrigger = Inf; % Shall be Inf
         %src.FrameRate = 2; % Highest possible is 31, lowest possible 1
         %% Laser object
-        handles.laser = laserClass;
+%        handles.laser = laserClass;
         % Add LSI image window as object
         handles.LSIimageWindow = imageWindow;
         % Listener
         handles.LSIimageWindowListener = imageWindowListener(handles.LSIimageWindow);
         % Measurement data
         handles.measurementData = measurementClass();
+        handles.database = databaseClass();
         % handles or the database
         %handles.database = databaseClass;
         % ROI objects. Fix according to kernelSize
