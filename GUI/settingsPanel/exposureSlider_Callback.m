@@ -44,3 +44,4 @@ handles.previousExposureValue = val;
 guidata(hObject, handles);
 % Print exposure time
 disp(src.Shutter)
+disp(src.Gain)

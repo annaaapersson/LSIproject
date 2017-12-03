@@ -59,7 +59,22 @@ classdef databaseClass < handle
             close(conn);
         end
         
-        
+        function sendMeasurementData(obj, handles, timestamp, examination,...
+                physician)
+            %% Send unique inforamtion and metadata to database
+            colnames = {'patient_ID', 'timestamp', 'examination',...
+                'physician', 'gain', 'exposure', 'kernel_size'};
+            data = {handles.loggedPatientID, timestamp, examination, physician,...
+                handles.gainSlider.Value, handles.exposureSlider.Value,...
+                handles.kernelSizeSlider.Value};
+            data_table = cell2table(data,'VariableNames',colnames);
+            %done = 1
+            %% Insert the measurement data
+            conn = database('measurementDatabase','doctorsName','test');
+            insert(conn, 'measurement', colnames, data_table );
+            %data_inserted_into_the_database = 1
+            close(conn)
+        end
     end
 end
 
