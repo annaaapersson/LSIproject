@@ -48,6 +48,8 @@ function main()
         handles.LSIimageWindow = imageWindow;
         % Listener
         handles.LSIimageWindowListener = imageWindowListener(handles.LSIimageWindow);
+        % Measurement data
+        handles.measurementData = measurementClass();
         % handles or the database
         %handles.database = databaseClass;
         % ROI objects. Fix according to kernelSize
