@@ -15,12 +15,18 @@ handles.auxillaryPanel.Position(2) = 218/720;
 % toggle on visibility of dedicated panels
 handles.historyPanel.Visible = 'on';
 handles.patientDBPanel.Visible = 'on';
-handles.examinatonTablePanel.Visible = 'on';
+handles.examinatonTablePanel.Visible = 'off';
+
+if handles.isLogged == 1
+    patientData = handles.database.getTableData(handles.loggedPatientID);
+    handles.examinationDataTable.Data = table2cell(patientData);
+    handles.examinationTablePanel.Visible = 'on';
+    handles.patientDBPanel.Visible = 'off';
+end
 
 guidata(hObject, handles);
 
 %% Functionality
-%Deactivate image flow
 handles.LSIimageWindow.deactivate;
 
 end

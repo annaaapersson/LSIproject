@@ -3,11 +3,18 @@ function saveDBButton(hObject, eventdata)
 handles = guidata(hObject);
 
 patientName = handles.nameDBEdit.String;
-SSN = str2double(handles.SSNDBEdit.String);
-handles.
+SSN = handles.SSNDBEdit.String;
+
 data = struct('patienName', patientName, 'SSN', SSN);
 handles.saveDBButton.UserData = data;
 
-% display(handles.enterButton.UserData);
+% Input the patient into the datbase
+handles.database.addNewPatient(SSN, patientName);
+handles.commonPatientIDLabel.String = [SSN ' ' patientName];
+handles.patientLogoutButton.Visible = 'on';
 
-guidata(hObject, handles); 
+% display(handles.enterButton.UserData);
+handles.nameDBEdit.String = '';
+handles.SSNDBEdit.String = '';
+
+guidata(hObject, handles);  

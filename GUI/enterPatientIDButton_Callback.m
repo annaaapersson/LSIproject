@@ -4,14 +4,43 @@ function enterPatientIDButton_Callback(hObject, eventdata)
 
 handles = guidata(hObject);
 
-handles.patientInfoPanel.Visible = 'on';
-handles.imageDisplayPanel.Visible = 'on';
-handles.examinationPanel.Visible = 'on';
+%handles.patientInfoPanel.Visible = 'on';
+%handles.imageDisplayPanel.Visible = 'on';
+%handles.examinationPanel.Visible = 'on';
 
-patientID = str2double(handles.enterPatientIDEditField.String);
+patientName = handles.enterPatientIDEditField.String;
 
-data = struct('PatientID', patientID);
-handles.enterPatientIDButton.UserData = data;
+%data = struct('PatientID', patientID);
+%handles.enterPatientIDButton.UserData = data;
+
+%try
+    [exists, data] = handles.database.checkIfValidPatientID(patientName);
+    display(exists)
+    display(data)
+    if  ~exists
+          handles.patientDBPanel.Visible = 'off';
+          handles.examinationTablePanel.Visible = 'on';
+          handles.commonPatientIDLabel.String = [data.patient_ID{1} ' ' data.patient_name{1}];
+          handles.loggedPatient = data.patient_name{1};
+          handles.loggedPatientID = data.patient_ID{1};
+          handles.enterPatientIDEditField.String = '';
+          handles.patientLogoutButton.Visible = 'on';
+          patientData = handles.database.getTableData(data.patient_ID{1}); 
+          handles.examinationDataTable.Data = table2cell(patientData);   
+          
+    else
+    end
+%catch
+%end
+
+
+guidata(hObject, handles);
+
+
+end
+
+
+
 
 % eventlistener if visibility of plattform is off
 %------------------------------------------------
@@ -22,8 +51,3 @@ handles.enterPatientIDButton.UserData = data;
 % else
 %     display('nej');
 % end
-
-guidata(hObject, handles);
-
-
-end
