@@ -12,19 +12,6 @@ function handles = saveImage(handles, t)
     %bdata = reshape(image,[],1);
    
     %names={'imageName1', 'imageName2', 'imageName3'};
-    imageTimestamp = getTimestamp;
-    
-    cd ImageArchive  
-    if t == '1'
-        handles.imageName1 = sprintf('t%s_%s.png',t, date)        
-        imwrite(image, handles.imageName1);
-    elseif t == '2' 
-         handles.imageName2 = sprintf('t%s_%s.png',t,date)
-        imwrite(image, handles.imageName2);
-    elseif t == '3'
-         handles.imageName3 = sprintf('t%s_%s.png',t,date)
-        imwrite(image, handles.imageName3);
-    end   
-    cd ..
+
 end
 
