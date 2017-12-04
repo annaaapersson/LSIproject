@@ -33,7 +33,7 @@ classdef plotClass < handle % might be used
             object.valuesAllROI1;
             plot(temp, object.valuesAllROI1, ...
                 temp, object.valuesAllROI2)
-            ylim([0 1])
+            ylim([0 1]);
         end
     end
 end

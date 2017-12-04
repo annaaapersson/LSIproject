@@ -55,6 +55,7 @@ classdef imageWindowListener < handle
                 % Inserts the values in ROI class
                 insertValueROI1(plotObject, value1, value2);
                 plotValues(plotObject, roiGraph);
+                ylim([0 1]);
                 end
              end
              laser.stop; % Turn off laser
