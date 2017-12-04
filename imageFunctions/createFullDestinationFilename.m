@@ -8,7 +8,7 @@ currentPath = pwd;
 %%
 storagePath = [currentPath,'\patientImages'];
 
-if strcmp(imageType, 'ROI1') || strcmp(imageType,'ROI2')
+if strcmp(imageType, 'ROI')
     storagePath = [storagePath,'\ROI_Images'];
 elseif strcmp(imageType, 'baseline') || strcmp(imageType,'min') ||...
         strcmp(imageType,'max')

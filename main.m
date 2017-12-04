@@ -59,13 +59,13 @@ function main()
         % Create the plot object
         handles.plotObject = plotClass;
         % Settings
-        handles.previousExposureValue = 12;
+        %handles.previousExposureValue = 12;
         handles.Kmax = 0.1440;
         handles.Kmin = 0.0268;
         
         handles.kernelSizeSlider.Value = 3;
-        handles.gainSlider.Value = 3;
-        handles.exposureSlider.Value = 7;
+        %handles.gainSlider.Value = 3;
+        handles.exposureSlider.Value = 12;
         handles.loggedPatient = '';
         handles.loggedPatientID = '';
         handles.isLogged = 0;

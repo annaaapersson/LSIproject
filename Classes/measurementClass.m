@@ -7,9 +7,8 @@ classdef measurementClass < handle
         minImage
         maxImage
         ROIImage
-        ROI1Vector
-        ROI2Vector
-       
+        ROI1_vector
+        ROI2_vector
     end
     
     methods
@@ -36,7 +35,16 @@ classdef measurementClass < handle
             % perfusion images.
             F = getframe(handles.videoStream);  %Save
             obj.maxImage = frame2im(F);
-        end
+         end
+         function saveROIImage(obj, handles)
+             %% Saves the ROIimage to file for the specified patient
+             % function dedicated to take images from the
+             % roiGraph panel, housing the calculated ROI-data figure
+             %ROIGraph = get(handles.roiGraph); 
+             %F = getframe(ROIGraph); % Save image of ROI graph
+             F = getframe(handles.roiGraph); % Save image of ROI graph
+             obj.ROIImage = frame2im(F);
+         end
     end
 end
 

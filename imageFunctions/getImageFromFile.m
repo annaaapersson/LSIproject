@@ -5,7 +5,7 @@ function [image] = getImageFromFile(patientID, timestamp, imageType)
 % 'imageType' can be baseline, min, max, ROI1 and ROI2.
 addpath(genpath(pwd));
 
-imageFilename = getImageFilename(patientID, timestamp, imageType)
+imageFilename = getImageFilename(patientID, timestamp, imageType);
 
 image = imread(imageFilename);
 

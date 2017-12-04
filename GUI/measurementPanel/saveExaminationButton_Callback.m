@@ -27,21 +27,25 @@ function saveExaminationButton_Callback(hObject, eventdata)
     handles.patientIDDBLabel.String = patientID;
     handles.patientNameDBLabel.String = handles.loggedPatient;  
     
-    % gets the images from the objects
+    % gets the images from the measurementData object
     image1 = handles.measurementData.baselineImage;
     image2 = handles.measurementData.minImage;
     image3 = handles.measurementData.maxImage;
+    image4 = handles.measurementData.ROIImage;
     
-    % displayes them in the measurement overview
+    % displays them in the measurement overview
     imshow(image1, 'Parent', handles.image_T0);
     imshow(image2, 'Parent', handles.image_T1);
     imshow(image3, 'Parent', handles.image_T2);
+    imshow(image4, 'Parent', handles.roiGraphDB);
     
     thisTimestamp = getTimestamp();
     if handles.isLogged ==1
         saveImageToFile(patientID, thisTimestamp, image1, 'baseline');
         saveImageToFile(patientID, thisTimestamp, image2, 'min');
-        saveImageToFile(patientID, thisTimestamp, image3, 'max')
+        saveImageToFile(patientID, thisTimestamp, image3, 'max');
+        saveImageToFile(patientID, thisTimestamp, image4, 'ROI');
+        saveROIDataToFile(handles, patientID, thisTimestamp);
     end 
     
     handles.database.sendMeasurementData(handles, thisTimestamp, examName)   
