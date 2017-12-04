@@ -1,7 +1,6 @@
 classdef measurementClass < handle
-    %UNTITLED Summary of this class goes here
-    %   Detailed explanation goes here
-    
+    % Stores the measurement data and 
+    % saves it to image files
     properties
         baselineImage
         minImage
@@ -40,8 +39,6 @@ classdef measurementClass < handle
              %% Saves the ROIimage to file for the specified patient
              % function dedicated to take images from the
              % roiGraph panel, housing the calculated ROI-data figure
-             %ROIGraph = get(handles.roiGraph); 
-             %F = getframe(ROIGraph); % Save image of ROI graph
              F = getframe(handles.roiGraph); % Save image of ROI graph
              obj.ROIImage = frame2im(F);
          end
