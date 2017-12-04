@@ -39,9 +39,9 @@ function saveExaminationButton_Callback(hObject, eventdata)
     
     thisTimestamp = getTimestamp();
     if handles.isLogged ==1
-        saveImageToFile(patientID,thisTimestamp , image1, 'baseline');
+        saveImageToFile(patientID, thisTimestamp, image1, 'baseline');
         saveImageToFile(patientID, thisTimestamp, image2, 'min');
-        saveImageToFile(patientID,thisTimestamp, image3, 'max')
+        saveImageToFile(patientID, thisTimestamp, image3, 'max')
     end 
     
     handles.database.sendMeasurementData(handles, thisTimestamp, examName)   

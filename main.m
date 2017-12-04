@@ -43,7 +43,7 @@ function main()
         %camera.FramesPerTrigger = Inf; % Shall be Inf
         %src.FrameRate = 2; % Highest possible is 31, lowest possible 1
         %% Laser object
-%        handles.laser = laserClass;
+       handles.laser = laserClass;
         % Add LSI image window as object
         handles.LSIimageWindow = imageWindow;
         % Listener

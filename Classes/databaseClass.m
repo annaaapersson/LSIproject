@@ -20,7 +20,7 @@ classdef databaseClass < handle
         function [exists, data] = checkIfValidPatientID(obj, patientID)
             %fig = findobj('Tag','fig');
             %handles = guidata(fig)
-            selectQuery = sprintf('SELECT * FROM patient WHERE patient_name = ''%s''', patientID );
+            selectQuery = sprintf('SELECT * FROM patient WHERE patient_ID = ''%s''', patientID );
             conn = database('measurementDatabase','doctorsName','test');
             data = select(conn, selectQuery);
             close(conn);
@@ -66,7 +66,7 @@ classdef databaseClass < handle
             data = {handles.loggedPatientID, timestamp, examination, ....
                 handles.physicianName, handles.gainSlider.Value, handles.exposureSlider.Value,...
                 handles.kernelSizeSlider.Value};
-            data_table = cell2table(data,'VariableNames',colnames);
+            data_table = cell2table(data,'VariableNames',colnames)
             %done = 1
             %% Insert the measurement data
             conn = database('measurementDatabase','doctorsName','test');
