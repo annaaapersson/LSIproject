@@ -6,19 +6,20 @@ function cellSelection_Callback(hObject, eventdata)
     
     selectedRow = eventdata.Indices(1);
     selectedExamination = handles.examinationDataTable.Data(selectedRow,:);
-    display(selectedExamination);
     
     %% using the data obtained from the database to be displayed in the
     % examinationpanel 
-    kernel = selectedExamination{1,7};
+    kernel = selectedExamination{1,7}*2-1;
     patientID = selectedExamination{1,1};
-    examinationDate = ['Examination date: ', selectedExamination{1,2}];
+    timestamp = selectedExamination{1,2};
+    examinationDate = ['Examination date: ', timestamp];
     examName = selectedExamination{1,3};
     physician = selectedExamination{1,4};
     measurementData = selectedExamination{1,5};
     gain = sprintf('Gain: ISO %d', selectedExamination{1,5});
     exposure = sprintf('Exposure: %d ms', selectedExamination{1,6});
     kernelSizeValue = sprintf('Kernel size: %d x %d px', kernel, kernel);
+    
    
     
     %% assignment of the strings to the labels in the
@@ -30,21 +31,24 @@ function cellSelection_Callback(hObject, eventdata)
     handles.examinationDateLabel.String = examinationDate;
     handles.patientIDDBLabel.String = patientID;
     handles.patientNameDBLabel.String = handles.loggedPatient;
+
     
     %% displaying the images corresponding to the choosen patient and
     %  timestamp
-    baseline_image = handles.measurementData.getImageFromFile(patientID, ...
-        selectedExamination{1,2}, 'baseline');
-    min_image = handles.measurement.getImageFromFile(patientID, ...
-        selectedExamination{1,2}, 'min');
-    max_image = handles.measurementData.getImageFromFile(patientID, ...
-        selectedExamination{1,2}, 'max');
-    
-    %% displaying the images in the GUI (examinationPanel)
-    imshow(baseline_image, 'Parent', handles.image_t0);
-    imshow(min_image, 'Parent', handles.image_t1);
-    imshow(max_image, 'Parent', handles.image_t2);
-      
+    try
+        baseline_image = handles.measurementData.getImageFromFile(patientID,... 
+            timestamp, 'baseline');
+        min_image = handles.measurementData.getImageFromFile(patientID, ...
+            timestamp, 'min');
+        max_image = handles.measurementData.getImageFromFile(patientID, ...
+            timestamp, 'max');
+
+        %% displaying the images in the GUI (examinationPanel)
+        imshow(baseline_image, 'Parent', handles.image_T0);
+        imshow(min_image, 'Parent', handles.image_T1);
+        imshow(max_image, 'Parent', handles.image_T2);
+    catch
+    end
     %% toggeling of the visibility of the panels
     handles.examinationPanel.Visible = 'on';
     handles.imageDisplayPanel.Visible = 'on';

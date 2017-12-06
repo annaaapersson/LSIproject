@@ -43,7 +43,7 @@ function main()
         %camera.FramesPerTrigger = Inf; % Shall be Inf
         %src.FrameRate = 2; % Highest possible is 31, lowest possible 1
         %% Laser object
-       handles.laser = laserClass;
+%       handles.laser = laserClass;
         % Add LSI image window as object
         handles.LSIimageWindow = imageWindow;
         % Listener
@@ -59,13 +59,14 @@ function main()
         % Create the plot object
         handles.plotObject = plotClass;
         % Settings
-        %handles.previousExposureValue = 12;
+        handles.previousExposureValue = 12;
         handles.Kmax = 0.1440;
         handles.Kmin = 0.0268;
         
+        handles.physicianName = '';
         handles.kernelSizeSlider.Value = 3;
-        %handles.gainSlider.Value = 3;
-        handles.exposureSlider.Value = 12;
+        handles.gainSlider.Value = 3;
+        handles.exposureSlider.Value = 7;
         handles.loggedPatient = '';
         handles.loggedPatientID = '';
         handles.isLogged = 0;
