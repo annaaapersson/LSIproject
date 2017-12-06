@@ -12,8 +12,16 @@ handles.startRecordingButton.Visible = 'on';
 handles.stopRecordingButton.Visible = 'off';
 
 handles.startRecordingPanel.Visible = 'off';
-handles.savePanel.Visible = 'on';
-handles.saveMeasurementPanel.Visible = 'on';
+
+if handles.isLogged == 1
+    handles.savePanel.Visible = 'on';
+    handles.saveMeasurementPanel.Visible = 'on';
+else
+    handles = displayData(handles);
+    handles.examinationPanel.Visible = 'on';
+    handles.imageDisplayPanel.Visible = 'on';
+    handles.patientInfoPanel.Visible = 'on';
+end
 
 handles.LSIimageWindow.activeCalcROI = 0;
 

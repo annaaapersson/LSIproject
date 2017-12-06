@@ -10,6 +10,9 @@ handles.saveMeasurementPanel.Visible = 'off';
 handles.roi1Panel.Visible = 'on';
 handles.roi2Panel.Visible = 'on';
 
+% reactivating video stream 
+handles.LSIimageWindow.activate(handles);
+
 % h = imrect(gca);
 % position = wait(h);
 end

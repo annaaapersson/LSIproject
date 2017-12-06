@@ -24,11 +24,15 @@ if handles.isLogged == 1
 else
     handles.patientPanel.Visible = 'on';
 end
-handles.videoPanel.Visible = 'on';
 
-%% Functionality
-handles.LSIimageWindow.activate(handles);
+handles.startRecordingButton.Enable = 'off';
+handles.stopRecordingButton.Enable = 'off';
+handles.videoPanel.Visible = 'on';
 
 %update handles
 guidata(hObject, handles);
+%% Functionality
+handles.LSIimageWindow.activate(handles);
+
+
 end
