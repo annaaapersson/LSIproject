@@ -3,20 +3,10 @@ function enterPatientIDButton_Callback(hObject, eventdata)
 %historyPanel.Visible = 'off';
 
 handles = guidata(hObject);
+patientID = handles.enterPatientIDEditField.String;
 
-%handles.patientInfoPanel.Visible = 'on';
-%handles.imageDisplayPanel.Visible = 'on';
-%handles.examinationPanel.Visible = 'on';
-
-patientName = handles.enterPatientIDEditField.String;
-
-%data = struct('PatientID', patientID);
-%handles.enterPatientIDButton.UserData = data;
-
-%try
-    [exists, data] = handles.database.checkIfValidPatientID(patientName);
-    display(exists)
-    display(data)
+try
+    [exists, data] = handles.database.checkIfValidPatientID(patientID);
     if  ~exists
           handles.patientDBPanel.Visible = 'off';
           handles.examinationTablePanel.Visible = 'on';
@@ -26,12 +16,13 @@ patientName = handles.enterPatientIDEditField.String;
           handles.enterPatientIDEditField.String = '';
           handles.patientLogoutButton.Visible = 'on';
           patientData = handles.database.getTableData(data.patient_ID{1}); 
-          handles.examinationDataTable.Data = table2cell(patientData);   
+          handles.examinationDataTable.Data = table2cell(patientData); 
+          handles.isLogged = 1;
           
     else
     end
-%catch
-%end
+catch
+end
 
 
 guidata(hObject, handles);

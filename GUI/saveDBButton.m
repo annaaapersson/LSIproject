@@ -2,7 +2,7 @@ function saveDBButton(hObject, eventdata)
 %loading the updated handles from gcbo
 handles = guidata(hObject);
 
-patientName = handles.nameDBEdit.String;
+patientID = handles.nameDBEdit.String;
 SSN = handles.SSNDBEdit.String;
 
 data = struct('patienName', patientName, 'SSN', SSN);
