@@ -13,5 +13,7 @@ handles.nameField.String = '';
 handles.SSNEdit.String = '';
 handles.enter2Button.UserData = data;
 handles.database.addNewPatient(SSNField, patientName);
+handles.roi1Panel.Visible = 'on';
+handles.patientPanel.Visible = 'off';
 
 guidata(hObject, handles);
