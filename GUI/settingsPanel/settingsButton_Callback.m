@@ -13,6 +13,7 @@ handles.auxillaryPanel.Position(2) = 507/720;
 % toggle the visibility of the dedicated planes on
 handles.settingsPanel.Visible = 'on'; 
 handles.videoPanel.Visible = 'on';
+handles.startPagePanel.Visible = 'off';
 
 %% Functionallity 
 %Deactivate image flow
