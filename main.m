@@ -66,16 +66,9 @@ function main()
         handles.physicianName = '';
         handles.kernelSizeSlider.Value = 3;
         handles.gainSlider.Value = 3;
-        handles.exposureSlider.Value = 7;
         handles.loggedPatient = '';
         handles.loggedPatientID = '';
         handles.isLogged = 0;
-        handles.ROI1Values = [];
-        handles.ROI2Values = [];
-        handles.timeStamp = '';
-        handles.imageName1 = '';
-        handles.imageName2 = '';
-        handles.imageName3 = '';
 %        handles.physicianName = 'Dr. Oetker';
         
         LaserStarInc;           % calls gui function
