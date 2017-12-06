@@ -1,4 +1,4 @@
-function historyButton_Callback(hObject, eventdata, handles)
+function historyButton_Callback(hObject, eventdata)
 
 handles = guidata(hObject);
 
@@ -23,6 +23,8 @@ if handles.isLogged == 1
     handles.examinationTablePanel.Visible = 'on';
     handles.patientDBPanel.Visible = 'off';
 end
+
+handles.startPagePanel.Visible = 'off';
 
 guidata(hObject, handles);
 
