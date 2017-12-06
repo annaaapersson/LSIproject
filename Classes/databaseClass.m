@@ -24,15 +24,11 @@ classdef databaseClass < handle
             conn = database('measurementDatabase','doctorsName','test');
             data = select(conn, selectQuery);
             close(conn);
-            %display(data);
             exists = isempty(data);
-            %dataStruct = struct('PatientID', data.patient_name, 'SSN', data.patient_ID, 'exists', exists);
-            %handles.enterPatientIDButton.UserData = dataStruct;
-            %guidata(handles.fig,handles);
          end
-  
+
         function  data = getTableData(obj, patientID)
-            selectQuery = sprintf('SELECT * FROM measurement WHERE patient_ID = ''%s''', patientID );
+            selectQuery = sprintf('SELECT patient_ID, timestamp, examination, physician, gain, exposure, kernel_size FROM measurement WHERE patient_ID = ''%s''', patientID );
             conn = database('measurementDatabase','doctorsName','test');
             data = select(conn, selectQuery);
             close(conn);
@@ -45,10 +41,12 @@ classdef databaseClass < handle
             data = {handles.loggedPatientID, timestamp, examination, ....
                 handles.physicianName, handles.gainSlider.Value, handles.exposureSlider.Value,...
                 handles.kernelSizeSlider.Value};
-            data_table = cell2table(data,'VariableNames',colnames)
+            data_table = cell2table(data,'VariableNames',colnames);
+            %done = 1
             %% Insert the measurement data
             conn = database('measurementDatabase','doctorsName','test');
             insert(conn, 'measurement', colnames, data_table );
+            %data_inserted_into_the_database = 1
             close(conn)
         end
     end

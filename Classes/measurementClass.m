@@ -1,6 +1,7 @@
 classdef measurementClass < handle
-    % Stores the measurement data and 
-    % saves it to image files
+    %UNTITLED Summary of this class goes here
+    %   Detailed explanation goes here
+    
     properties
         baselineImage
         minImage
@@ -8,6 +9,7 @@ classdef measurementClass < handle
         ROIImage
         ROI1_vector
         ROI2_vector
+       
     end
     
     methods
@@ -35,13 +37,26 @@ classdef measurementClass < handle
             F = getframe(handles.videoStream);  %Save
             obj.maxImage = frame2im(F);
          end
-         function saveROIImage(obj, handles)
-             %% Saves the ROIimage to file for the specified patient
-             % function dedicated to take images from the
-             % roiGraph panel, housing the calculated ROI-data figure
-             F = getframe(handles.roiGraph); % Save image of ROI graph
-             obj.ROIImage = frame2im(F);
+         
+         function image =  getImageFromFile(obj, patientID, timestamp, imageType)
+            % Get specific image from file
+            %% Required input types
+            % Input 'patientID', 'timestamp' and 'imageType' of type string
+            % 'imageType' can be baseline, min, max, ROI1 and ROI2.
+            addpath(genpath(pwd));
+            imageFilename = getImageFilename(patientID, timestamp, imageType)
+            image = imread(imageFilename);
          end
+         
+         function saveROIImage(obj, handles)
+              %% Saves the ROIimage to file for the specified patient
+              % function dedicated to take images from the
+              % roiGraph panel, housing the calculated ROI-data figure
+              %ROIGraph = get(handles.roiGraph); 
+              %F = getframe(ROIGraph); % Save image of ROI graph
+              F = getframe(handles.roiGraph); % Save image of ROI graph
+              obj.ROIImage = frame2im(F);
+          end
     end
 end
 

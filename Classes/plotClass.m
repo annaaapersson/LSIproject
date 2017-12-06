@@ -6,7 +6,6 @@ classdef plotClass < handle % might be used
         valuesAllROI2
         valuesPlotROI2
         counter
-        % Times when Images are taken
         imageTimes = [];
     end
     
@@ -30,25 +29,26 @@ classdef plotClass < handle % might be used
         end
         
         function plotValues(object, ax)
-            axes(ax);
-            temp = object.counter;
-            object.valuesAllROI1;
-            plot(temp, object.valuesAllROI1, ...
-                temp, object.valuesAllROI2);
-            object.imageTimes
-            try
-                vline(object.imageTimes);
-            catch
-                %disp('Warning: imageTimes in plotobject did not fulfil vline requirements ');
-                %warning('Warning: imageTimes in plotobject did not fulfil vline requirements.');
-            end
-            %h = vline(imageTimes,{'g','r','b'},{'Image 1','Image 2','Image 3'})
-            ylim([0 1]);
+             axes(ax);
+              temp = object.counter;
+              object.valuesAllROI1;
+              plot(temp, object.valuesAllROI1, ...
+                 temp, object.valuesAllROI2);
+             object.imageTimes
+             try
+                 vline(object.imageTimes);
+             catch
+                 %disp('Warning: imageTimes in plotobject did not fulfil vline requirements ');
+                 %warning('Warning: imageTimes in plotobject did not fulfil vline requirements.');
+             end
+             %h = vline(imageTimes,{'g','r','b'},{'Image 1','Image 2','Image 3'})
+              ylim([0 1]);
         end
-        % When an image is taken, that timepoint is added
-        function imageWasTaken(object)
-            object.imageTimes = [object.imageTimes,...
-                object.counter(length(object.counter))];
-        end
+          
+         % When an image is taken, that timepoint is added
+         function imageWasTaken(object)
+             object.imageTimes = [object.imageTimes,...
+                 object.counter(length(object.counter))];
+         end
     end
 end
