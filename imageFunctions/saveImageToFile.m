@@ -9,7 +9,7 @@ function [] = saveImageToFile(patientID, timestamp, image, imageType)
 
 %% Save image to file
 % Get full destination filename
-fullDestinationFileName = createFullDestinationFilename(patientID, timestamp, imageType);
+fullDestinationFileName = createFullDestinationFilename(patientID, timestamp, imageType)
 % Write image to full destination filename
 display(fullDestinationFileName);
 imwrite(image, fullDestinationFileName);
