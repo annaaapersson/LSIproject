@@ -6,6 +6,12 @@ function main()
         
         addpath(genpath(pwd)); % Add subfolders to path
         
+        % check if the necessary folder structure is available, otherwise
+        % it is created
+        
+        if exist('patientImages')
+            cd 
+        end
         folderFlag = exist('measurementImages');
         if folderFlag == 0
             mkdir measurementImages;

@@ -49,6 +49,14 @@ function cellSelection_Callback(hObject, eventdata)
         imshow(max_image, 'Parent', handles.image_T2);
     catch
     end
+    %% plotting of the roi graphs from the corresponding .mat files
+    [time, ROI1, ROI2, imageTimes] = getROIDataFromFile(patientID,...
+    timestamp);
+    axes(handles.roiGraphDB);
+    plot(time, ROI1, 'r', time, ROI2, 'b');
+    vline(imageTimes);
+    ylim([0 1]);
+    
     %% toggeling of the visibility of the panels
     handles.examinationPanel.Visible = 'on';
     handles.imageDisplayPanel.Visible = 'on';
