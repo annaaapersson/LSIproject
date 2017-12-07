@@ -8,8 +8,7 @@ classdef measurementClass < handle
         maxImage
         ROIImage
         ROI1_vector
-        ROI2_vector
-       
+        ROI2_vector 
     end
     
     methods
@@ -56,7 +55,15 @@ classdef measurementClass < handle
               %F = getframe(ROIGraph); % Save image of ROI graph
               F = getframe(handles.roiGraph); % Save image of ROI graph
               obj.ROIImage = frame2im(F);
-          end
+         end
+         function resetMeasurementData(obj)
+             obj.baselineImage = [];
+             obj.minImage = [];
+             obj.maxImage = [];
+             obj.ROIImage = [];
+             obj.ROI1_vector = [];
+             obj.ROI2_vector = [];
+         end
     end
 end
 

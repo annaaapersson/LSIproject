@@ -20,6 +20,8 @@ classdef imageWindow < handle
          function deactivate(obj)
             if false ~= obj.State
                 obj.State = false;
+                obj.activeImrect = 0;
+                obj.activeCalcROI = 0;
             end
          end
          function takeTestImage(obj, handles)

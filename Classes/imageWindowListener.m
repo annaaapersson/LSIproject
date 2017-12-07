@@ -41,10 +41,12 @@ classdef imageWindowListener < handle
                     displayImage = imshow(contrastImage, 'parent',...
                         videoStream, 'Colormap', jet(255),'DisplayRange',[0.5 1]);
                     colorbar(videoStream);
-                    axes(videoStream);
-                    e = imrect(gca,[]);
+                    %axes(videoStream);
+                    %e = imrect(gca,[]);
+                    e = imrect(videoStream, []);
                     ROI1.matrix = createMask(e,displayImage);
-                    e = imrect(gca,[]);
+                    %e = imrect(gca,[]);
+                    e = imrect(videoStream, []);
                     ROI2.matrix = createMask(e,displayImage);
                     src.activeImrect = 0;
                 end
