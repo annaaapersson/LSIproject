@@ -9,9 +9,9 @@ function main()
         % check if the necessary folder structure is available, otherwise
         % it is created
         
-        if exist('patientImages')
-            cd 
-        end
+%         if exist('patientImages')
+%             cd 
+%         end
         folderFlag = exist('measurementImages');
         if folderFlag == 0
             mkdir measurementImages;

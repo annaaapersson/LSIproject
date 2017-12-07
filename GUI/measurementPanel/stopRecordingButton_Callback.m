@@ -36,6 +36,6 @@ plotValues(handles.plotObject, handles.smallerRoiGraph);
 % Put the ROI vectors in the workspace - temporary solution
 %assignin('base', 'ROI_1_vector', handles.plotObject.valuesAllROI1);
 %assignin('base', 'ROI_2_vector', handles.plotObject.valuesAllROI2);
-
+cla(handles.roiGraph);
 guidata(hObject, handles);
 

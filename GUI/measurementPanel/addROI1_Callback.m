@@ -20,8 +20,7 @@ function addROI1_Callback(hObject, eventdata, handles, datas)
      %handles.ROI2.resetROI();
      % Remove all previous measurement data
      handles.measurementData.resetMeasurementData();
-     % Remove data from he roi graph
-     cla(handles.roiGraph);
+     % Remove data from he roi graph     
      cla(handles.roiGraphDB);
      cla(handles.smallerRoiGraph);
      guidata(hObject, handles);

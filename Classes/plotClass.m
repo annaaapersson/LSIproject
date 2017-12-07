@@ -30,12 +30,15 @@ classdef plotClass < handle % might be used
         
         function plotValues(object, ax)
              axes(ax);
-              temp = object.counter;
-              object.valuesAllROI1;
+              temp = object.counter;             
               plot(temp, object.valuesAllROI1, 'r', ...
                  temp, object.valuesAllROI2, 'b');
-             try
+             if ~isempty(object.imageTimes)
                  vline(object.imageTimes);
+             end
+             
+             try
+                 
              catch
                  %disp('Warning: imageTimes in plotobject did not fulfil vline requirements ');
                  %warning('Warning: imageTimes in plotobject did not fulfil vline requirements.');
