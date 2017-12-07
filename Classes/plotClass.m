@@ -32,9 +32,9 @@ classdef plotClass < handle % might be used
              axes(ax);
               temp = object.counter;
               object.valuesAllROI1;
-              plot(temp, object.valuesAllROI1, ...
-                 temp, object.valuesAllROI2);
-             object.imageTimes
+              plot(temp, object.valuesAllROI1, 'r',...
+                 temp, object.valuesAllROI2, 'b');
+             object.imageTimes;
              try
                  vline(object.imageTimes);
              catch
@@ -42,7 +42,7 @@ classdef plotClass < handle % might be used
                  %warning('Warning: imageTimes in plotobject did not fulfil vline requirements.');
              end
              %h = vline(imageTimes,{'g','r','b'},{'Image 1','Image 2','Image 3'})
-              ylim([0 1]);
+              %ylim([0 1]);
         end
           
          % When an image is taken, that timepoint is added
