@@ -26,7 +26,7 @@ function main()
         src.ExposureMode = 'Manual';
         src.Exposure = 0;
         src.GainMode = 'Manual';
-        src.Gain = 1; % Some [dB] scale
+        src.Gain = 0; % Some [dB] scale
         src.GammaMode = 'Manual';
         src.Gamma = 1;
         src.SharpnessMode = 'Manual';
@@ -43,7 +43,7 @@ function main()
         %camera.FramesPerTrigger = Inf; % Shall be Inf
         %src.FrameRate = 2; % Highest possible is 31, lowest possible 1
         %% Laser object
-%       handles.laser = laserClass;
+       handles.laser = laserClass;
         % Add LSI image window as object
         handles.LSIimageWindow = imageWindow;
         % Listener
@@ -65,7 +65,7 @@ function main()
         
         handles.physicianName = '';
         handles.kernelSizeSlider.Value = 3;
-        handles.gainSlider.Value = 3;
+%        handles.gainSlider.Value = 3;
         handles.loggedPatient = '';
         handles.loggedPatientID = '';
         handles.isLogged = 0;
