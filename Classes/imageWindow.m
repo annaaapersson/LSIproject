@@ -20,8 +20,6 @@ classdef imageWindow < handle
          function deactivate(obj)
             if false ~= obj.State
                 obj.State = false;
-                obj.activeImrect = 0;
-                obj.activeCalcROI = 0;
             end
          end
          function takeTestImage(obj, handles)
@@ -33,18 +31,18 @@ classdef imageWindow < handle
 %              imageLaser = snapshot(camera);
 %              % Stop laser
              %% If using pointgrey camera and laser:
-%             laser = handles.laser; % Get the laser object
+             laser = handles.laser; % Get the laser object
              global camera; % Get the camera object
              start(camera)
              %trigger(camera); % If choosing manual trigger
              imageNoLaser = getdata(camera);
-%             laser.start; % Turn on laser
+             laser.start; % Turn on laser
              %Start not needed if having 2 triggers for each start
              start(camera);
              %trigger(camera); % If choosing manual trigger
              imageLaser = getdata(camera);
              stop(camera); % Stop the camera
-%             laser.stop; % Turn off laser
+             laser.stop; % Turn off laser
              %% Image processing
              ambientLightCorrectedImage = imageLaser - imageNoLaser;
              % Get the kernel size and round data from slider

@@ -6,7 +6,7 @@ classdef imageWindowListener < handle
     end
     methods (Static)
         function handleEvnt(src,ed)
-%            laser = ed.handles.laser;
+            laser = ed.handles.laser;
             videoStream = ed.handles.videoStream;
             ROI1 = ed.handles.ROI1;
             ROI2 = ed.handles.ROI2;
@@ -16,7 +16,7 @@ classdef imageWindowListener < handle
             global camera;
              start(camera)
              imageNoLaser = getdata(camera);
-%             laser.start; % Turn on laser
+             laser.start; % Turn on laser
              while (src.State == true)
                 %% If using webcam
 %                 imageNoLaser = snapshot(camera);
@@ -42,11 +42,9 @@ classdef imageWindowListener < handle
                         videoStream, 'Colormap', jet(255),'DisplayRange',[0.5 1]);
                     colorbar(videoStream);
                     %axes(videoStream);
-                    %e = imrect(gca,[]);
-                    e = imrect(videoStream, []);
+                    e = imrect(videoStream,[]);
                     ROI1.matrix = createMask(e,displayImage);
-                    %e = imrect(gca,[]);
-                    e = imrect(videoStream, []);
+                    e = imrect(videoStream,[]);
                     ROI2.matrix = createMask(e,displayImage);
                     src.activeImrect = 0;
                 end
@@ -59,7 +57,7 @@ classdef imageWindowListener < handle
                 plotValues(plotObject, roiGraph);
                 end
              end
-%             laser.stop; % Turn off laser
+             laser.stop; % Turn off laser
              stop(camera)
              return;
         end

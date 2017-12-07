@@ -36,10 +36,12 @@ classdef databaseClass < handle
         
         function sendMeasurementData(obj, handles, timestamp, examination)                
             %% Send unique inforamtion and metadata to database
+            global src;
+            
             colnames = {'patient_ID', 'timestamp', 'examination',...
                 'physician', 'gain', 'exposure', 'kernel_size'};
             data = {handles.loggedPatientID, timestamp, examination, ....
-                handles.physicianName, handles.gainSlider.Value, handles.exposureSlider.Value,...
+                handles.physicianName, src.Gain, handles.exposureSlider.Value,...
                 handles.kernelSizeSlider.Value};
             data_table = cell2table(data,'VariableNames',colnames);
             %done = 1
