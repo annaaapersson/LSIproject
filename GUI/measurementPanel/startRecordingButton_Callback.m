@@ -19,7 +19,7 @@ handles.timeStamp = getTimestamp;
 % Activate start of ROI calculations
 handles.LSIimageWindow.activeCalcROI = 1;
 
-guidata(hObject);
+guidata(hObject,handles);
 
 
 % if startRecordingPanel.Visible == 'off'
