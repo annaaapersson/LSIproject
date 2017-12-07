@@ -2,9 +2,7 @@ classdef plotClass < handle
     
     properties
         valuesAllROI1
-        %valuesPlotROI1
         valuesAllROI2
-        %valuesPlotROI2
         counter
         imageTimes = [];
     end
@@ -13,9 +11,7 @@ classdef plotClass < handle
         % Constructor
         function plotObj = plotClass()
             plotObj.valuesAllROI1 = [];
-            %plotObj.valuesPlotROI1 = [];
             plotObj.valuesAllROI2 = [];
-            %plotObj.valuesPlotROI2 = [];
         end
         
         function insertValueROI1(object, value1, value2)
@@ -50,9 +46,7 @@ classdef plotClass < handle
          
          function resetPlot(plotObj)
              plotObj.valuesAllROI1 = [];
-             %plotObj.valuesPlotROI1 = [];
              plotObj.valuesAllROI2 = [];
-             %plotObj.valuesPlotROI2 = [];
              plotObj.counter = [];
              plotObj.imageTimes = [];
          end
