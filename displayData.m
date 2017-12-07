@@ -1,10 +1,11 @@
 function handles = displayData(handles)
+    global src;
 
     kernel = handles.kernelSizeSlider.Value;
     patientID = handles.loggedPatientID;
     examinationDate = ['Examination date: ', date];
     examName = handles.examinationNameEditField.String;
-    gain = sprintf('Gain: ISO %d', handles.gainSlider.Value);
+    gain = sprintf('Gain: ISO %d', src.Gain);
     exposure = sprintf('Exposure: %d ms', handles.exposureSlider.Value);
     kernelSizeValue = sprintf('Kernel size: %d x %d px', kernel*2-1, kernel*2-1);
 
