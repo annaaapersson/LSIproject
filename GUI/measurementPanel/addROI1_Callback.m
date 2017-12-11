@@ -23,6 +23,9 @@ function addROI1_Callback(hObject, eventdata, handles, datas)
      % Remove data from he roi graph     
      cla(handles.roiGraphDB);
      cla(handles.smallerRoiGraph);
+     % Test to remove from current axis
+     cla(gca);
+     %
      guidata(hObject, handles);
      handles = guidata(hObject);
     %h = imrect(gca, [datas12.x datas12.y datas11.width datas11.height]);
